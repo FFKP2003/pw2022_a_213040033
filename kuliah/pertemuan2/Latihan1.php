@@ -141,11 +141,13 @@ echo $x++;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belajar  php</title>
+    
 </head>
 <body>
     <h1>Halo, Selamat Datang <?php echo "Faqih Firdaus Kemal Pangestu"; ?></h1>
     <h1>Halo, Selamat Datang <?php echo $nama; ?></h1>
     <p><?php echo "ini adalah nama saya" ?></p>
     <?php echo "<h1>Halo, Selamat datang semuanya</h1>"?>
+
 </body>
 </html>
