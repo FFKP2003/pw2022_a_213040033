@@ -54,7 +54,7 @@ var_dump($mahasiswa)
         <li>Email   :  <?php echo $mhs[2] ?></li>
         <li>Jurusan :  <?php echo $mhs[3] ?></li>
     </ul>
-    <?php  endforeach ?>
+    <?php  endforeach; ?>
     
 </body>
 </html>
