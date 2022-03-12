@@ -53,7 +53,7 @@ echo "<hr>";
 
 //foreach (khusus untuk array)
 
-foreach($bulan as $b)  { // jamak = array as tunggal = variabel
+foreach($bulan as $b)  { // jamak = array as singular/tunggal = variabel
  echo $b;
  echo "<br>";
 
@@ -62,6 +62,12 @@ echo "<hr>";
 
 // foreach ($hari as $key => $value) {
 //     echo "key: $key, value: $value";
+//     echo "<br>";
+// }
+//     echo "<hr>";
+
+// foreach ($hari as $students => $student) {
+//     echo "key: $students, value: $student";
 //     echo "<br>";
 // }
 //     echo "<hr>";
