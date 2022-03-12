@@ -56,8 +56,6 @@ var_dump($mahasiswa)
     </ul>
     <?php  endforeach; ?>
     
-
-    
 </body>
 </html>
 
