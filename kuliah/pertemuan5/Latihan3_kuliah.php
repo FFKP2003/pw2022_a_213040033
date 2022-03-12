@@ -55,6 +55,7 @@ var_dump($mahasiswa)
         <li>Jurusan :  <?php echo $mhs[3] ?></li>
     </ul>
     <?php  endforeach ?>
+    
 </body>
 </html>
 

@@ -50,6 +50,5 @@ $angka = [3,2,15,20,11,77,89,8,100];
         <div class="kotak"><?php echo $a; ?></div>
      <?php endforeach; ?>
 
-     
 </body>
 </html>
