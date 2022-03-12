@@ -56,7 +56,7 @@ echo "<hr>";
 foreach($bulan as $b)  { // jamak = array as singular/tunggal = variabel
  echo $b;
  echo "<br>";
-
+ 
 }
 echo "<hr>";
 

@@ -47,17 +47,14 @@ var_dump($mahasiswa)
         <li><?php echo $mahasiswa[3]; ?></li>
     </ul>    -->
 
-    <?php foreach($mahasiswa as $mhs) { ?>
+    <?php foreach($mahasiswa as $mhs) : ?>
     <ul>
         <li>Nama    :  <?php echo $mhs[0] ?></li>
         <li>NPM     :  <?php echo $mhs[1] ?></li>
         <li>Email   :  <?php echo $mhs[2] ?></li>
         <li>Jurusan :  <?php echo $mhs[3] ?></li>
     </ul>
-    <?php } ?>
-
-
-
+    <?php  endforeach ?>
 </body>
 </html>
 
