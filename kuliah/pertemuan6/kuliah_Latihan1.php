@@ -26,6 +26,7 @@ $mahasiswa = [
         "email" => "Ramzy@gmail.com",
         "jurusan" => "Teknik Industri"
     ]
+    
 ];
 // var_dump($mahasiswa[2]["email"]);
 // var_dump($mahasiswa[2][2]);
