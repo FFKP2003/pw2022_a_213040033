@@ -130,8 +130,7 @@ switch($nama) {
         break;
     default :
         echo "nama yang anda masukkan salah!";
-        break;
-        
+        break;     
 }
 
 
