@@ -131,6 +131,7 @@ switch($nama) {
     default :
         echo "nama yang anda masukkan salah!";
         break;
+        
 }
 
 

@@ -26,6 +26,7 @@
             </tr>
         <?php  endfor;  ?> 
 
+        
 <!-- Menggunakan php dengan tag tr html -->
  <!-- for( $i = 1; $i <= 3; $i++ ) {
           echo "<tr>";
