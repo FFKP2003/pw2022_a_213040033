@@ -16,5 +16,6 @@ function salam($waktu = 'Makan', $nama = 'hiiqaff')  {
 </head>
 <body>
     <h1><?= salam("Sore","faqih F.K.P"); ?></h1>
+    
 </body>
 </html>

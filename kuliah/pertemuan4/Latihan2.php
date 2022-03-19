@@ -23,6 +23,7 @@
 // echo "total luas dari kubus A dengan sisi $a dan kubus B dengan sisi $b adalah $total";
 
 // echo "<hr>";
+
 function totalLuasDuaKubus($a, $b) {
 
     $luas_a = $a * $a * $a;
