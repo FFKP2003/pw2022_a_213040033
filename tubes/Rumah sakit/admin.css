@@ -1,0 +1,36 @@
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.nav-link:hover {
+  background-color: grey;
+}
+.display-4 {
+  font-weight: bold;
+}
+img {
+  border-radius: 20px;
+  height: 110px;
+  position: absolute;
+  z-index: 0;
+  top: 25px;
+  right: 4px;
+  font-size: 50px;
+}
+.card {
+  margin-left: 80px;
+}
+.col-md-10 h3 {
+  margin-left: 65px;
+}
+.container {
+  margin: -35px;
+}
+.card-body .btn:hover {
+  background-color: blue;
+}
+.card-body .btn:active {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
