@@ -27,10 +27,16 @@ img {
 .container {
   margin: -35px;
 }
+.container-fluid a {
+  text-decoration: none;
+}
+.container-fluid a:hover {
+  color: rgb(255, 255, 255);
+}
 .card-body .btn:hover {
-  background-color: blue;
+  background-color: rgb(0, 0, 0);
 }
 .card-body .btn:active {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(6, 221, 254);
   color: black;
 }

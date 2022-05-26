@@ -25,6 +25,7 @@ if (isset($_SESSION['hak_akses']) == null) {
                 <h1 data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000"><label class="label label-danger">Sistem Informasi Rumah Sakit</label></h1>
+     <h2>Login User</h2>
                 
 
                 <div align="center" style="width:320px;margin-top:5%;">
