@@ -1,9 +1,19 @@
 <?php  
 
 require 'functions.php';
-$tbl_pasien = query("SELECT * FROM tbl_pasien");
+// query data pasien berdasarkan id
+$Id_Pasien = $_GET["id"];
+$tbl_p = query("SELECT * FROM tbl_pasien WHERE id_pasien = $Id_Pasien")[0];
+if (isset($_POST["ubah_pasien"])) {
 
-
+if (ubah_pasien($_POST) > 0) {
+  echo "<script>
+          alert( 'data berhasil diubah!' );
+          document.location.href =
+          'daftar_pasien.php';
+          </script>";
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,40 +77,34 @@ $tbl_pasien = query("SELECT * FROM tbl_pasien");
       <div class="col-md-10 pt-5">
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
-        <a href= "tambah_data_pasien.php" class="btn badge btn-primary">Tambah Data Pasien</a>
+        <a href= "daftar_pasien.php" class="btn badge btn-info">Kembali ke Daftar Pasien</a>
+        <form action="" method="POST" autocomplete="off">
+        <div class="mb-3 col-lg-5">
+             <label for="nama_pasien" class="form-label">Nama Pasien</label>
+             <input type="text"  class="form-control" id="nama" name="nama_pasien" required  value="<?= $tbl_p['nama_pasien']; ?>">
+        </div>
+        <div class="mb-3 col-lg-4">
+             <label for="alamat" class="form-label">Alamat</label>
+             <textarea type="text" class="form-control" id="alamat" rows="3" name="alamat" required value="<?= $tbl_p['alamat'];  ?>" ></textarea>
+        </div>
+        <div class="mb-3 col-lg-2">
+             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+        <select  class="form-select" aria-label="Default select example" name="jenis_kelamin"value="<?= $tbl_p['jenis_kelamin']; ?>">
+            <option value="L">laki-laki</option>
+            <option value="P">perempuan</option>
+        </select>
+        </div>
+        <div class="mb-3 col-lg-5">
+             <label for="no_telepon" class="form-label">Nomor Telepon</label>
+             <input type="text" class="form-control" name="no_telepon" required value="<?= $tbl_p['no_telepon']; ?>">
+        </div>
+        <div class="mb-3 col-lg-5">
+             <label for="id_dokter" class="form-label">Id Dokter</label>
+             <input type="text"  class="form-control" name="id_dokter" value="<?= $tbl_p['id_dokter']; ?>">
+        </div>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">id_pasien</th>
-              <th scope="col">Nama_pasien</th>
-              <th scope="col">Alamat</th>
-              <th scope="col">Jenis_kelamin</th>
-              <th scope="col">No_Telepon</th>
-              <th scope="col">Id_Dokter</th>
-              <th colspan="3" scope="col">Aksi</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            
-            <?php  foreach ($tbl_pasien as $tbl_p) { ?>
-              <tr>
-                <td><?php echo  $tbl_p['id_pasien']; ?></td>
-                <td><?php echo  $tbl_p['nama_pasien']; ?></td>
-                <td><?php echo  $tbl_p['alamat']; ?></td>
-                <td><?php echo  $tbl_p['jenis_kelamin']; ?></td>
-                <td><?php echo  $tbl_p['no_telepon']; ?></td>
-                <td><?php echo  $tbl_p['id_dokter']; ?></td>
-  
-                <td>
-                  <a href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" class="btn btn-primary">ubah</a>
-                  <a href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"class="btn btn-danger" onclick = "return confirm('yakin ingin menghapus data?');">hapus</a>
-                </td>
-                </tr>
-              <?php  } ?>
-          </tbody>
-        </table>
+        <button type="submit" class="btn btn-primary" name="ubah">ubah Data Pasien</button>
+        </form>
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -121,3 +125,4 @@ $tbl_pasien = query("SELECT * FROM tbl_pasien");
     -->
   </body>
 </html>
+

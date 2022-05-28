@@ -1,5 +1,5 @@
 <?php
-include './konfig.php';
+require 'functions.php';
 session_start();
 if (isset($_SESSION['hak_akses']) == null) {
     ?>
@@ -23,13 +23,14 @@ if (isset($_SESSION['hak_akses']) == null) {
                 <br>
                 <h1 data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"><label class="label label-danger">Sistem Informasi Rumah Sakit</label></h1>
-     <h2 >Login Admin</h2>
-                
-
+     data-aos-duration="2000"><label class="label label-primary">Sistem Informasi Rumah Sakit</label></h1>
+     <h2 style="color: white;"data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="1500"
+     data-aos-offset="0">Login Admin</h2>
                 <div align="center" style="width:320px;margin-top:5%;">
-                    <form name="login_form" method="post" class="well well-lg" action="login.php">
-                        <i class="fa fa-hospital-o fa-5x fa-inverse" style="background-color: red;padding: 20px 28px 20px 28px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
+                    <form name="login_form" method="post" class="well well-lg" action="login_admin.php" style="-webkit-box-shadow: 0px 0px 20px #888888;">
+                        <i class="fa fa-hospital-o fa-5x fa-inverse" style="background-color: blue;padding: 20px 28px 20px 28px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
                         <br>
                         <br>
                         <?php 
@@ -50,7 +51,7 @@ if (isset($_SESSION['hak_akses']) == null) {
                             <input name="password" id="password" class="form-control" type="password" placeholder="Password" autocomplete="off" />
                         </div>
                         <br />
-                        <input name="submit" type="submit" value="Login" class="btn btn-primary btn-block">
+                        <input name="submit" type="submit" value="Login" class="btn btn-info btn-block">
                     </form>
 
                 </div>
@@ -60,7 +61,7 @@ if (isset($_SESSION['hak_akses']) == null) {
             <br>
 
             <footer align="center">
-                <center><b style="color:#ffffff">Created by</b> <a href="/index.php">Faqih firdaus kemal pangestu</a></center>
+                <center><b style="color:#ffffff">Created by</b> <a href="http://localhost/phpmyadmin/index.php?route=/sql&server=1&db=rumah_sakit&table=tbl_user&pos=0">Faqih firdaus kemal pangestu</a></center>
             </footer>
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
             <script>
@@ -69,21 +70,6 @@ if (isset($_SESSION['hak_akses']) == null) {
         </body>
     </html>
     <?php
-} else {
-    if ($_SESSION['hak_akses'] == "Dokter") {
-        header("location:dokter.php");
-    } elseif ($_SESSION['hak_akses'] == "Front Office") {
-        header("location:front-office.php?view=tampil_pasien");
-    } elseif ($_SESSION['hak_akses'] == "Departemen") {
-        header("location:departemen.php?view=tampil_pasien");
-    } elseif ($_SESSION['hak_akses'] == "Apoteker") {
-        header("location:apoteker.php");
-    } elseif ($_SESSION['hak_akses'] == "perawat") {
-        header("location:perawat.php");
-    } else {
-        echo 'user tidak ditemukan';
-        session_destroy();
-    }
 }
 ?>
 

@@ -3,7 +3,7 @@
 require 'functions.php';
 // mengklik tombol tambah()
 
-if (isset($_POST["tambah_data_pasien"])) {
+if (isset($_POST["tambah"])) {
 
 if (tambah_data_pasien($_POST) > 0) {
   echo "<script>
@@ -75,31 +75,31 @@ if (tambah_data_pasien($_POST) > 0) {
       </div>
       <div class="col-md-10 pt-5">
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PASIEN</h3>
-        <a href= "tambah_data_pasien.php" class="btn badge btn-primary">Tambah Data Pasien</a>
         <hr class="backgorund-color: grey" />
-        <form action="" method="POST" >
+        <a href= "daftar_pasien.php" class="btn badge btn-info">Kembali ke Daftar Pasien</a>
+        <form action="" method="POST" autocomplete="off">
         <div class="mb-3 col-lg-5">
-             <label for="" class="form-label">Nama Pasien</label>
-             <input type="text" name="nama" class="form-control"  >
+             <label for="nama_pasien" class="form-label">Nama Pasien</label>
+             <input type="text"  class="form-control" id="nama" name="nama_pasien" required>
         </div>
         <div class="mb-3 col-lg-4">
-             <label for="" class="form-label">Alamat</label>
-             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+             <label for="alamat" class="form-label">Alamat</label>
+             <textarea class="form-control" id="alamat" rows="3" name="alamat" required></textarea>
         </div>
         <div class="mb-3 col-lg-2">
-             <label for="" class="form-label">Jenis Kelamin</label>
-        <select name="jenis_kelamin" class="form-select" aria-label="Default select example">
+             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+        <select  class="form-select" aria-label="Default select example" name="jenis_kelamin">
             <option value="L">laki-laki</option>
             <option value="P">perempuan</option>
         </select>
         </div>
         <div class="mb-3 col-lg-5">
-             <label for="" class="form-label">Nomor Telepon</label>
-             <input type="text" name="nama" class="form-control"  >
+             <label for="no_telepon" class="form-label">Nomor Telepon</label>
+             <input type="text" class="form-control" name="no_telepon" required >
         </div>
         <div class="mb-3 col-lg-5">
-             <label for="" class="form-label">Id Dokter</label>
-             <input type="text" name="nama" class="form-control"  >
+             <label for="id_dokter" class="form-label">Id Dokter</label>
+             <input type="text"  class="form-control" name="id_dokter" >
         </div>
 
         <button type="submit" class="btn btn-primary" name="tambah">Tambah Data Pasien</button>

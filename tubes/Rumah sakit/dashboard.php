@@ -13,13 +13,7 @@ require 'functions.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="admin.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.min.css" />
     <title>SELAMAT DATANG ADMIN</title>
   </head>
@@ -28,7 +22,7 @@ require 'functions.php';
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
 
@@ -68,40 +62,35 @@ require 'functions.php';
         <div class="row text-white">
           <div class="card bg-danger pt-4" style="width: 20rem">
             <div class="card-body">
-              <a href="/images/pasien.png"><img src="/images/pasien.png" alt="" /></a>
+              <a href="./images/pasien.png"><img src="./images/pasien.png" alt=""/></a>
               <div class="card-body-icon"></div>
+           
               <h5 class="card-title">JUMLAH PASIEN</h5>
               <div class="display-4">900</div>
-              <a href=""
-                ><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p
-              ></a>
+              <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
 
           <div class="card bg-info pt-4" style="width: 20rem">
             <div class="card-body">
-              <a href="/images/dokter.png"><img src="/images/dokter.png" alt="" /></a>
+              <a href="./images/dokter.png"><img src="./images/dokter.png" alt="" /></a>
               <div class="card-body-icon"></div>
               <h5 class="card-title">JUMLAH DOKTER</h5>
               <div class="display-4">500</div>
-              <a href=""
-                ><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p
-              ></a>
+              <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
           <div class="card bg-warning pt-4" style="width: 20rem">
             <div class="card-body">
-              <a href="/images/user.png"><img src="/images/user.png" alt="" /></a>
+              <a href="./images/user.png"><img src="./images/user.png" alt="" ></a>
               <div class="card-body-icon"></div>
               <h5 class="card-title">JUMLAH USER</h5>
               <div class="display-4">2</div>
-              <a href=""
-                ><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p
-              ></a>
+              <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
         </div>
-        <br />
+        <br/>
         <div class="container-fluid text-center">
           <div class="card-header">MANFAAT RUMAH SAKIT</div>
           <div class="card-body">

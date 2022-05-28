@@ -1,5 +1,5 @@
 <?php
-include './konfig.php';
+require 'functions.php';
 session_start();
 if (isset($_SESSION['hak_akses']) == null) {
     ?>
@@ -25,11 +25,14 @@ if (isset($_SESSION['hak_akses']) == null) {
                 <h1 data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000"><label class="label label-danger">Sistem Informasi Rumah Sakit</label></h1>
-     <h2>Login User</h2>
+     <h2 style="color: #ffffff;"data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="1500"
+     data-aos-offset="0">Login User</h2>
                 
 
                 <div align="center" style="width:320px;margin-top:5%;">
-                    <form name="login_form" method="post" class="well well-lg" action="login.php">
+                    <form name="login_form" method="post" class="well well-lg" action="login_user.php" style="-webkit-box-shadow: 0px 0px 20px #888888;">
                         <i class="fa fa-hospital-o fa-5x fa-inverse" style="background-color: red;padding: 20px 28px 20px 28px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
                         <br>
                         <br>
@@ -51,7 +54,7 @@ if (isset($_SESSION['hak_akses']) == null) {
                             <input name="password" id="password" class="form-control" type="password" placeholder="Password" autocomplete="off" />
                         </div>
                         <br />
-                        <input name="submit" type="submit" value="Login" class="btn btn-primary btn-block">
+                        <input name="submit" type="submit" value="Login" class="btn btn-danger btn-block">
                     </form>
 
                 </div>
@@ -61,7 +64,7 @@ if (isset($_SESSION['hak_akses']) == null) {
             <br>
 
             <footer align="center">
-                <center><b style="color:#ffffff">Created by</b> <a href="/index.php">Faqih firdaus kemal pangestu</a></center>
+                <center><b style="color:#ffffff">Created by</b> <a href="http://localhost/phpmyadmin/index.php?route=/sql&server=1&db=rumah_sakit&table=tbl_user&pos=0" style="color: red;">Faqih firdaus kemal pangestu</a></center>
             </footer>
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
             <script>
