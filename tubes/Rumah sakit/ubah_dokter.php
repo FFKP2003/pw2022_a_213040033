@@ -1,14 +1,24 @@
 <?php  
 
 require 'functions.php';
-$tbl_pasien = query("SELECT * FROM tbl_pasien");
 
-// ketika tombol search di klik
-if (isset($_POST['keyword'])) {
-  $tbl_pasien = Search($_POST["keyword"]);
+//  jika tidak ada id di url
+if (!isset($_GET["id"])) {
+  header("Location: daftar_dokter.php");
 }
+// query data pasien berdasarkan id
+$Id_Dokter = $_GET["id"];
+$tbl_d = query("SELECT * FROM tbl_dokter WHERE id_dokter = $Id_Dokter")[0];
+if (isset($_POST["ubah_dokter"])) {
 
-
+if (ubah_dokter($_POST) > 0) {
+  echo "<script>
+          alert( 'data berhasil diubah!' );
+          document.location.href =
+          'daftar_dokter.php';
+          </script>";
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +44,9 @@ if (isset($_POST['keyword'])) {
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-        <form class="d-flex" action="" method="POST" autocomplete="off">
-          <input class="form-control me-2" type="Search" name="keyword" placeholder="Cari" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit" autofocus>Cari</button>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="cari" aria-label="Search" />
+          <button class="btn btn-outline-dark" type="submit">Cari</button>
         </form>
 
         <div class="icon">
@@ -56,7 +66,7 @@ if (isset($_POST['keyword'])) {
             <a class="nav-link active text-white pt-4" href="dashboard.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar Pengguna</a>
+            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar user</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white pt-4" href="daftar_pasien.php"><i class="fa-solid fa-bed" style="margin-right: 10px"></i>Daftar Pasien</a>
@@ -65,53 +75,54 @@ if (isset($_POST['keyword'])) {
             <a class="nav-link text-white pt-4" href="daftar_dokter.php"><i class="fa-solid fa-user-doctor" style="margin-right: 10px"></i>Daftar Dokter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark pt-4" href="login_admin.php">Logout</a>
+            <a class="nav-link text-dark pt-4" href="#">Logout</a>
           </li>
         </ul>
       </div>
       <div class="col-md-10 pt-5">
-        <h3><i class="fa-solid fa-bed"></i>DAFTAR PASIEN</h3>
+        <h3><i class="fa-solid fa-gauge"></i>DAFTAR DOKTER</h3>
         <hr class="backgorund-color: grey" />
-        <a href= "tambah_data_pasien.php" class="btn badge btn-primary">Tambah Data Pasien</a>
+        <h2>Form Ubah Data Dokter</h2>
+        <a href= "daftar_dokter.php" class="btn badge btn-info">Kembali ke Daftar Dokter</a>
+        <form action="" method="POST" autocomplete="off">
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Id_Pasien</th>
-              <th scope="col">Nama_pasien</th>
-              <th scope="col">Alamat</th>
-              <th scope="col">Jenis_kelamin</th>
-              <th scope="col">No_Telepon</th>
-              <th scope="col">Id_Dokter</th>
-              <th colspan="3" scope="col">Aksi</th>
+        <input type="hidden" name="id_dokter" value="<?= $tbl_d['id_dokter']; ?>">
 
-            </tr>
+        <div class="mb-3 col-lg-5">
+             <label for="nama_dokter" class="form-label">Nama Dokter</label>
+             <input type="text"  class="form-control" id="nama" name="nama_dokter" required  value="<?= $tbl_d['nama_dokter']; ?>">
+        </div>
+        <label for="spesialis" class="form-label">Spesialis</label>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="spesialis"><?= $tbl_d['spesialis']; ?>
+             <option value="Umum">Senin - Kamis | 08.00 - 15.00</option>
+             <option value="Gigi">Senin - jum'at  | 09.00 - 18.00</option>
+             <option value="Anak">Selasa - jum'at | 08.30 - 17.00</option>
+             <option value="Kandungan">senin - jum'at | 07.30 - 19.00</option>
+             <option value="THT">senin - kamis | 10.00 - 19.00</option>
+             <option value="Syaraf">Senin - Kamis | 08.15 - 16.00</option>
+             <option value="Kulit dan Kelamin">Selasa - jum'at | 07.00 - 14.00</option>
+        </select>
+        <br>
+        <div>
+        <label for="jadwal_praktik" class="form-label">Jadwal_Praktik</label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jadwal_praktik" ><?= $tbl_d['jadwal_praktik']; ?>
+             <option value="Senin - Kamis | 08.00 - 15.00">Umum</option>
+             <option value="Senin - jum'at  | 09.00 - 18.00">Gigi</option>
+             <option value="Selasa - jum'at | 08.30 - 17.00">Anak</option>
+             <option value="senin - jum'at | 07.30 - 19.00">Kandungan</option>
+             <option value="senin - kamis | 10.00 - 19.00">THT</option>
+             <option value="Senin - Kamis | 08.15 - 16.00">Syaraf</option>
+             <option value="Selasa - jum'at | 07.00 - 14.00">Kulit dan Kelamin</option>
+        </select>
+        </div>
 
-            <?php  if(empty($tbl_pasien)): ?>
-            <tr>
-              <td colspan="4"><p style="color: blue; font-style: italic;">Data Pasien Tidak Di Temukan!</p><b>(NOT FOUND)</b></td>
-            </tr>
-            <?php  endif; ?>
-          </thead>
-          <tbody>
-            
-            <?php  foreach ($tbl_pasien as $tbl_p) { ?>
-              <tr>
-                <td><?php echo  $tbl_p['id_pasien']; ?></td>
-                <td><?php echo  $tbl_p['nama_pasien']; ?></td>
-                <td><?php echo  $tbl_p['alamat']; ?></td>
-                <td><?php echo  $tbl_p['jenis_kelamin']; ?></td>
-                <td><?php echo  $tbl_p['no_telepon']; ?></td>
-                <td><?php echo  $tbl_p['id_dokter']; ?></td>
-  
-                <td>
-                  <a href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" class="btn badge btn-primary">ubah</a>
-                  <a href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"class="btn badge btn-danger" onclick = "return confirm('yakin ingin menghapus data?');">hapus</a>
-                </td>
-              </tr>
-            <?php  } ?>
-          </tbody>
-        </table>
+        <div class="mb-3 col-lg-5">
+             <label for="gambar" class="form-label">Gambar</label>
+             <input type="file" class="form-control" id="gambar" name="gambar" required >
+        </div>
+
+        <button type="submit" class="btn btn-primary" name="ubah_dokter">Ubah Data Dokter</button>
+        </form>
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -132,3 +143,4 @@ if (isset($_POST['keyword'])) {
     -->
   </body>
 </html>
+

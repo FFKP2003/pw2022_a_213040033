@@ -1,7 +1,10 @@
 <?php
 require 'functions.php';
-session_start();
-if (isset($_SESSION['hak_akses']) == null) {
+// ketika tombol login ditekan
+
+if (isset($_POST['login_user'])) {
+    login_user($_POST);
+}
     ?>
     <html>
         <head>
@@ -12,7 +15,7 @@ if (isset($_SESSION['hak_akses']) == null) {
             <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
             <style type="text/css">
                 body{
-                    background-image: url(images/login_user.jpg);
+                    background-image: url(img/login_user.jpg);
                     
                 }
 
@@ -28,7 +31,7 @@ if (isset($_SESSION['hak_akses']) == null) {
      <h2 style="color: #ffffff;"data-aos="fade-zoom-in"
      data-aos-easing="ease-in-back"
      data-aos-delay="1500"
-     data-aos-offset="0">Login User</h2>
+     data-aos-offset="0">Login Pengguna</h2>
                 
 
                 <div align="center" style="width:320px;margin-top:5%;">
@@ -46,15 +49,15 @@ if (isset($_SESSION['hak_akses']) == null) {
                                 ?>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="username" id="username" class="form-control" type="text" placeholder="Username" autocomplete="off" autofocus="" />
+                            <input name="username" id="username" class="form-control" type="text" placeholder="Username" autocomplete="off" autofocus required/>
                         </div>
                         <br/>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                            <input name="password" id="password" class="form-control" type="password" placeholder="Password" autocomplete="off" />
+                            <input name="password" id="password" class="form-control" type="password" placeholder="Password" required/>
                         </div>
                         <br />
-                        <input name="submit" type="submit" value="Login" class="btn btn-danger btn-block">
+                        <input name="login_user" type="submit" value="Login" class="btn btn-danger btn-block">
                     </form>
 
                 </div>
@@ -73,22 +76,7 @@ if (isset($_SESSION['hak_akses']) == null) {
         </body>
     </html>
     <?php
-} else {
-    if ($_SESSION['hak_akses'] == "Dokter") {
-        header("location:dokter.php");
-    } elseif ($_SESSION['hak_akses'] == "Front Office") {
-        header("location:front-office.php?view=tampil_pasien");
-    } elseif ($_SESSION['hak_akses'] == "Departemen") {
-        header("location:departemen.php?view=tampil_pasien");
-    } elseif ($_SESSION['hak_akses'] == "Apoteker") {
-        header("location:apoteker.php");
-    } elseif ($_SESSION['hak_akses'] == "perawat") {
-        header("location:perawat.php");
-    } else {
-        echo 'user tidak ditemukan';
-        session_destroy();
-    }
-}
+
 ?>
 
 

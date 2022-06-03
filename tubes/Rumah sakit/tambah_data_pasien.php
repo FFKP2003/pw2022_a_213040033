@@ -2,7 +2,7 @@
 
 require 'functions.php';
 // mengklik tombol tambah()
-
+$dokter = query("SELECT * FROM tbl_dokter");
 if (isset($_POST["tambah"])) {
 
 if (tambah_data_pasien($_POST) > 0) {
@@ -39,8 +39,8 @@ if (tambah_data_pasien($_POST) > 0) {
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Cari" aria-label="Search" />
+          <button class="btn btn-outline-dark" type="submit">Cari</button>
         </form>
 
         <div class="icon">
@@ -76,6 +76,7 @@ if (tambah_data_pasien($_POST) > 0) {
       <div class="col-md-10 pt-5">
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
+        <h2>Form Tambah Data Pasien</h2>
         <a href= "daftar_pasien.php" class="btn badge btn-info">Kembali ke Daftar Pasien</a>
         <form action="" method="POST" autocomplete="off">
         <div class="mb-3 col-lg-5">
@@ -93,13 +94,18 @@ if (tambah_data_pasien($_POST) > 0) {
             <option value="P">perempuan</option>
         </select>
         </div>
-        <div class="mb-3 col-lg-5">
+        <div class="mb-3 col-lg-2">
              <label for="no_telepon" class="form-label">Nomor Telepon</label>
-             <input type="text" class="form-control" name="no_telepon" required >
+             <input type="number" class="form-control" name="no_telepon" required >
         </div>
-        <div class="mb-3 col-lg-5">
+        <div class="mb-3 col-lg-2">
              <label for="id_dokter" class="form-label">Id Dokter</label>
-             <input type="text"  class="form-control" name="id_dokter" >
+        <select  class="form-select" aria-label="Default select example" name="id_dokter">
+            <option value="">Pilih dokter</option>
+            <?php  foreach($dokter as $d): ?>
+            <option value="<?= $d['id_dokter']; ?>"><?= $d['nama_dokter']; ?></option>
+            <?php  endforeach; ?>
+        </select>
         </div>
 
         <button type="submit" class="btn btn-primary" name="tambah">Tambah Data Pasien</button>

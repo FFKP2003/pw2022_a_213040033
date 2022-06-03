@@ -1,10 +1,15 @@
 <?php  
 
 require 'functions.php';
+$tbl_dokter = query("SELECT * FROM tbl_dokter");
+
+// ketika tombol search di klik
+if (isset($_POST['keyword'])) {
+  $tbl_dokter = Cari($_POST["keyword"]);
+}
+
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,23 +20,16 @@ require 'functions.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="admin.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.min.css" />
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>SELAMAT DATANG ADMIN</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit">Search</button>
+        <form class="d-flex" action="" method="POST" autocomplete="off">
+          <input class="form-control me-2" type="Search" name="keyword" placeholder="Cari" aria-label="Search" />
+          <button class="btn btn-outline-dark" type="submit" autofocus>Cari</button>
         </form>
 
         <div class="icon">
@@ -51,7 +49,7 @@ require 'functions.php';
             <a class="nav-link active text-white pt-4" href="dashboard.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar user</a>
+            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar Pengguna</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white pt-4" href="daftar_pasien.php"><i class="fa-solid fa-bed" style="margin-right: 10px"></i>Daftar Pasien</a>
@@ -60,13 +58,49 @@ require 'functions.php';
             <a class="nav-link text-white pt-4" href="daftar_dokter.php"><i class="fa-solid fa-user-doctor" style="margin-right: 10px"></i>Daftar Dokter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark pt-4" href="#">Logout</a>
+            <a class="nav-link text-dark pt-4" href="login_admin.php">Logout</a>
           </li>
         </ul>
       </div>
       <div class="col-md-10 pt-5">
-        <h3><i class="fa-solid fa-gauge"></i>DAFTAR DOKTER</h3>
+        <h3><i class="fa-solid fa-user-doctor"></i>DAFTAR DOKTER</h3>
         <hr class="backgorund-color: grey" />
+        <a href= "tambah_data_dokter.php" class="btn badge btn-primary">Tambah Data Dokter</a>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id_Dokter</th>
+              <th scope="col">Gambar</th>
+              <th scope="col">Nama_Dokter</th>
+              <th scope="col">Spesialis</th>
+              <th scope="col">Jadwal_Praktik</th>
+              <th colspan="3" scope="col">Aksi</th>
+
+            </tr>
+
+            <?php  if(empty($tbl_dokter)): ?>
+            <tr>
+              <td colspan="4"><p style="color: blue; font-style: italic;">Data Dokter Tidak Di Temukan!</p><b>(NOT FOUND)</b></td>
+            </tr>
+            <?php  endif; ?>
+          </thead>
+          <tbody>
+            <?php  foreach ($tbl_dokter as $tbl_d) { ?>
+              <tr class="align-middle">      
+                <td><?php echo  $tbl_d['id_dokter']; ?></td>
+                <td><img class="img-dokter rounded-circle" src="img/<?= $tbl_d["gambar"]; ?>"></td>
+                <td><?php echo  $tbl_d['nama_dokter']; ?></td>
+                <td><?php echo  $tbl_d['spesialis']; ?></td>
+                <td><?php echo  $tbl_d['jadwal_praktik']; ?></td>
+                  <td>
+                  <a href="ubah_dokter.php?id=<?= $tbl_d['id_dokter'] ?>" class="btn badge btn-primary">ubah</a>
+                  <a href="hapus_dokter.php?id=<?= $tbl_d['id_dokter'] ?>"class="btn badge btn-danger" onclick = "return confirm('yakin ingin menghapus data?');">hapus</a>
+                </td>
+              </tr>
+            <?php  } ?>
+          </tbody>
+        </table>
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->

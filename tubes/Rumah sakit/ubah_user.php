@@ -1,14 +1,24 @@
 <?php  
 
 require 'functions.php';
-$tbl_pasien = query("SELECT * FROM tbl_pasien");
 
-// ketika tombol search di klik
-if (isset($_POST['keyword'])) {
-  $tbl_pasien = Search($_POST["keyword"]);
+//  jika tidak ada id di url
+if (!isset($_GET["id"])) {
+  header("Location: daftar_user.php");
 }
+// query data pasien berdasarkan id
+$Id_User = $_GET["id"];
+$tbl_u = query("SELECT * FROM tbl_user WHERE id_user = $Id_User")[0];
+if (isset($_POST["ubah_user"])) {
 
-
+if (ubah_user($_POST) > 0) {
+  echo "<script>
+          alert( 'data berhasil diubah!' );
+          document.location.href =
+          'daftar_user.php';
+          </script>";
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +44,9 @@ if (isset($_POST['keyword'])) {
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-        <form class="d-flex" action="" method="POST" autocomplete="off">
-          <input class="form-control me-2" type="Search" name="keyword" placeholder="Cari" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit" autofocus>Cari</button>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="cari" aria-label="Search" />
+          <button class="btn btn-outline-dark" type="submit">Cari</button>
         </form>
 
         <div class="icon">
@@ -56,7 +66,7 @@ if (isset($_POST['keyword'])) {
             <a class="nav-link active text-white pt-4" href="dashboard.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar Pengguna</a>
+            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar user</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white pt-4" href="daftar_pasien.php"><i class="fa-solid fa-bed" style="margin-right: 10px"></i>Daftar Pasien</a>
@@ -65,53 +75,44 @@ if (isset($_POST['keyword'])) {
             <a class="nav-link text-white pt-4" href="daftar_dokter.php"><i class="fa-solid fa-user-doctor" style="margin-right: 10px"></i>Daftar Dokter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark pt-4" href="login_admin.php">Logout</a>
+            <a class="nav-link text-dark pt-4" href="#">Logout</a>
           </li>
         </ul>
       </div>
       <div class="col-md-10 pt-5">
-        <h3><i class="fa-solid fa-bed"></i>DAFTAR PASIEN</h3>
+        <h3><i class="fa-solid fa-gauge"></i>DAFTAR USER</h3>
         <hr class="backgorund-color: grey" />
-        <a href= "tambah_data_pasien.php" class="btn badge btn-primary">Tambah Data Pasien</a>
+        <h2>Form Ubah Data User</h2>
+        <a href= "daftar_user.php" class="btn badge btn-info">Kembali ke Daftar User</a>
+        <form action="" method="POST" autocomplete="off">
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Id_Pasien</th>
-              <th scope="col">Nama_pasien</th>
-              <th scope="col">Alamat</th>
-              <th scope="col">Jenis_kelamin</th>
-              <th scope="col">No_Telepon</th>
-              <th scope="col">Id_Dokter</th>
-              <th colspan="3" scope="col">Aksi</th>
+        <input type="hidden" name="id_user" value="<?= $tbl_u['id_user']; ?>">
 
-            </tr>
+        <div class="mb-3 col-lg-5">
+             <label for="username" class="form-label">Username</label>
+             <input type="text"  class="form-control" id="nama" name="username" required  value="<?= $tbl_u['username']; ?>">
+        </div>
+        <div class="mb-3 col-lg-5">
+             <label for="password" class="form-label">Password</label>
+             <input type="text"  class="form-control" id="nama" name="password" required  value="<?= $tbl_u['password']; ?>">
+        </div>
+        <div class="mb-3 col-lg-2">
+             <label for="status" class="form-label">Status</label>
+        <select  class="form-select" aria-label="Default select example" name="status"value="<?= $tbl_u['status']; ?>">
+            <option value="1">Aktif</option>
+            <option value="0">Tidak Aktif</option>
+        </select>
+        </div>
+        <div class="mb-3 col-lg-2">
+             <label for="role" class="form-label">Role</label>
+        <select  class="form-select" aria-label="Default select example" name="role"value="<?= $tbl_u['role']; ?>">
+            <option value="Admin">A</option>
+            <option value="User">U</option>
+        </select>
+        </div>
 
-            <?php  if(empty($tbl_pasien)): ?>
-            <tr>
-              <td colspan="4"><p style="color: blue; font-style: italic;">Data Pasien Tidak Di Temukan!</p><b>(NOT FOUND)</b></td>
-            </tr>
-            <?php  endif; ?>
-          </thead>
-          <tbody>
-            
-            <?php  foreach ($tbl_pasien as $tbl_p) { ?>
-              <tr>
-                <td><?php echo  $tbl_p['id_pasien']; ?></td>
-                <td><?php echo  $tbl_p['nama_pasien']; ?></td>
-                <td><?php echo  $tbl_p['alamat']; ?></td>
-                <td><?php echo  $tbl_p['jenis_kelamin']; ?></td>
-                <td><?php echo  $tbl_p['no_telepon']; ?></td>
-                <td><?php echo  $tbl_p['id_dokter']; ?></td>
-  
-                <td>
-                  <a href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" class="btn badge btn-primary">ubah</a>
-                  <a href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"class="btn badge btn-danger" onclick = "return confirm('yakin ingin menghapus data?');">hapus</a>
-                </td>
-              </tr>
-            <?php  } ?>
-          </tbody>
-        </table>
+        <button type="submit" class="btn btn-primary" name="ubah_user">Ubah Data User</button>
+        </form>
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -132,3 +133,4 @@ if (isset($_POST['keyword'])) {
     -->
   </body>
 </html>
+

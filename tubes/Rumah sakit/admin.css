@@ -9,7 +9,7 @@ body {
 .display-4 {
   font-weight: bold;
 }
-img {
+.img {
   border-radius: 20px;
   height: 110px;
   position: absolute;
@@ -39,4 +39,10 @@ img {
 .card-body .btn:active {
   background-color: rgb(6, 221, 254);
   color: black;
+}
+.img-dokter {
+  object-fit: cover;
+  object-position: center;
+  width: 60px;
+  height: 60px;
 }

@@ -1,6 +1,11 @@
 <?php  
 
 require 'functions.php';
+
+//  jika tidak ada id di url
+if (!isset($_GET["id"])) {
+  header("Location: daftar_pasien.php");
+}
 // query data pasien berdasarkan id
 $Id_Pasien = $_GET["id"];
 $tbl_p = query("SELECT * FROM tbl_pasien WHERE id_pasien = $Id_Pasien")[0];
@@ -40,8 +45,8 @@ if (ubah_pasien($_POST) > 0) {
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="cari" aria-label="Search" />
+          <button class="btn btn-outline-dark" type="submit">Cari</button>
         </form>
 
         <div class="icon">
@@ -77,15 +82,19 @@ if (ubah_pasien($_POST) > 0) {
       <div class="col-md-10 pt-5">
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
+        <h2>Form Ubah Data Pasien</h2>
         <a href= "daftar_pasien.php" class="btn badge btn-info">Kembali ke Daftar Pasien</a>
         <form action="" method="POST" autocomplete="off">
+
+        <input type="hidden" name="id_pasien" value="<?= $tbl_p['id_pasien']; ?>">
+
         <div class="mb-3 col-lg-5">
              <label for="nama_pasien" class="form-label">Nama Pasien</label>
              <input type="text"  class="form-control" id="nama" name="nama_pasien" required  value="<?= $tbl_p['nama_pasien']; ?>">
         </div>
         <div class="mb-3 col-lg-4">
              <label for="alamat" class="form-label">Alamat</label>
-             <textarea type="text" class="form-control" id="alamat" rows="3" name="alamat" required value="<?= $tbl_p['alamat'];  ?>" ></textarea>
+             <textarea type="text" class="form-control" id="alamat" rows="3" name="alamat" required ><?= $tbl_p['alamat'];  ?></textarea>
         </div>
         <div class="mb-3 col-lg-2">
              <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
@@ -103,7 +112,7 @@ if (ubah_pasien($_POST) > 0) {
              <input type="text"  class="form-control" name="id_dokter" value="<?= $tbl_p['id_dokter']; ?>">
         </div>
 
-        <button type="submit" class="btn btn-primary" name="ubah">ubah Data Pasien</button>
+        <button type="submit" class="btn btn-primary" name="ubah_pasien">Ubah Data Pasien</button>
         </form>
       </div>
     </div>

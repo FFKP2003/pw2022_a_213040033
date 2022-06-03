@@ -1,5 +1,6 @@
 <?php  
 require 'functions.php';
+
 ?>
 
 
@@ -21,9 +22,9 @@ require 'functions.php';
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-dark" type="submit">Search</button>
+        <form class="d-flex" action="" method="POST">
+          <input class="form-control me-2" type="Search" name="keyword" autocomplete="off" placeholder="Cari" aria-label="Search"/>
+          <button class="btn btn-outline-dark" type="submit" name="Search" autofocus>Cari</button>
         </form>
 
         <div class="icon">
@@ -43,7 +44,7 @@ require 'functions.php';
             <a class="nav-link active text-white pt-4" href="dashboard.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar user</a>
+            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar Pengguna</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white pt-4" href="daftar_pasien.php"><i class="fa-solid fa-bed" style="margin-right: 10px"></i>Daftar Pasien</a>
@@ -52,41 +53,54 @@ require 'functions.php';
             <a class="nav-link text-white pt-4" href="daftar_dokter.php"><i class="fa-solid fa-user-doctor" style="margin-right: 10px"></i>Daftar Dokter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark pt-4" href="#">Logout</a>
+            <a class="nav-link text-dark pt-4" href="login_admin.php">Logout</a>
           </li>
         </ul>
       </div>
       <div class="col-md-10 pt-5">
+        <div class="row justify-content-center">
+          <div class="col-6">
+<?php  if(isset($_GET['pesan'])){
+                           echo "<script>
+                          alert( 'Admin berhasil Login!' );
+                          document.location.href = 
+                          'dashboard.php';
+              
+                      </script>";
+              }
+                         ?>
+          </div>
+        </div>
         <h3><i class="fa-solid fa-gauge"></i>DASHBOARD</h3>
         <hr class="backgorund-color: grey" />
         <div class="row text-white">
           <div class="card bg-danger pt-4" style="width: 20rem">
             <div class="card-body">
-              <a href="./images/pasien.png"><img src="./images/pasien.png" alt=""/></a>
+              <a href="./img/pasien.png"><img class="img" src="./img/pasien.png" alt=""/></a>
               <div class="card-body-icon"></div>
            
               <h5 class="card-title">JUMLAH PASIEN</h5>
               <div class="display-4">900</div>
-              <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+              <a href="daftar_pasien.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
 
           <div class="card bg-info pt-4" style="width: 20rem">
             <div class="card-body">
-              <a href="./images/dokter.png"><img src="./images/dokter.png" alt="" /></a>
+              <a href="./img/dokter.png"><img class="img" src="./img/dokter.png" alt="" /></a>
               <div class="card-body-icon"></div>
               <h5 class="card-title">JUMLAH DOKTER</h5>
               <div class="display-4">500</div>
-              <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+              <a href="daftar_dokter.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
           <div class="card bg-warning pt-4" style="width: 20rem">
             <div class="card-body">
-              <a href="./images/user.png"><img src="./images/user.png" alt="" ></a>
+              <a href="./img/user.png"><img class="img" src="./img/user.png" alt="" ></a>
               <div class="card-body-icon"></div>
-              <h5 class="card-title">JUMLAH USER</h5>
+              <h5 class="card-title">JUMLAH PENGGUNA</h5>
               <div class="display-4">2</div>
-              <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+              <a href="daftar_user.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
         </div>
@@ -99,10 +113,10 @@ require 'functions.php';
               Rumah sakit sebagai salah satu sarana kesehatan yang memberikan pelayanan kesehatan kepada masyarakat.memiliki peran yang sangat strategis dalam mempercepat peningkatan derajat kesehatan masyarkat.Oleh karena itu, rumah sakit
               ini bersedia melayani anda 24 jam.
             </p>
-            <a href="https://maps.app.goo.gl/91d9aS6F4Yb9dEty7" class="btn btn-primary">LOKASI</a>
+            <a href="https://maps.app.goo.gl/91d9aS6F4Yb9dEty7" class="text-lightblue btn btn-primary" style="color: dark;">LOKASI</a>
           </div>
           <p>Jika kalian yang sedang sakit ingin segera sehat kembali,</p>
-          <p>Silahkan hubungi salah satu kontak di bawah ini dengan mengklik tombol <b>FOLLOW</b> dibawah ini.</p>
+          <p>Silahkan hubungi salah satu kontak di bawah ini dengan mengklik tombol <b>MENGIKUTI</b> dibawah ini.</p>
           <div class="card-footer text-muted">Since 26 Oktober 2016</div>
         </div>
         <div class="container mt-4 d-flex">
@@ -112,7 +126,7 @@ require 'functions.php';
             </div>
             <div class="card-body">
               <h5 class="card-title text-danger">INSTAGRAM</h5>
-              <a href="https://www.instagram.com/hiiqaff?r=nametag" class="btn btn-danger">FOLLOW</a>
+              <a href="https://www.instagram.com/hiiqaff?r=nametag" class="btn btn-danger">MENGIKUTI</a>
             </div>
           </div>
           <div class="card text-white text-center" style="width: 20rem">
@@ -121,7 +135,7 @@ require 'functions.php';
             </div>
             <div class="card-body">
               <h5 class="card-title text-primary">FACEBOOK</h5>
-              <a href="https://www.facebook.com/faqih.firdaus.560" class="btn btn-primary">FOLLOW</a>
+              <a href="https://www.facebook.com/faqih.firdaus.560" class="btn btn-primary">MENGIKUTI</a>
             </div>
           </div>
           <div class="card text-white text-center" style="width: 20rem">
@@ -130,12 +144,14 @@ require 'functions.php';
             </div>
             <div class="card-body">
               <h5 class="card-title text-success">WHATSAPP</h5>
-              <a href="https://wa.me/qr/3RWQUXC4NFE3L1" class="btn btn-success">FOLLOW</a>
+              <a href="https://wa.me/qr/3RWQUXC4NFE3L1" class="btn btn-success">MENGIKUTI</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <br>
+    <br>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

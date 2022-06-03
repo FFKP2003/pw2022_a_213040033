@@ -1,7 +1,13 @@
 <?php
 require 'functions.php';
-session_start();
-if (isset($_SESSION['hak_akses']) == null) {
+// ketika tombol login ditekan
+
+if (isset($_POST['login_admin'])) {
+    $login_admin = login_admin($_POST);
+
+    
+}
+
     ?>
     <html>
         <head>
@@ -12,7 +18,7 @@ if (isset($_SESSION['hak_akses']) == null) {
             <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
             <style type="text/css">
                 body{
-                    background-image: url(images/login_admin.jpg);
+                    background-image: url(img/login_admin.jpg);
                 }
 
             </style>
@@ -34,24 +40,24 @@ if (isset($_SESSION['hak_akses']) == null) {
                         <br>
                         <br>
                         <?php 
-                        if(isset($_GET['error'])){
+                        if(isset($login_admin) && $login_admin['error'] ){
                             echo '<div class="alert alert-warning alert-dismissible fade in" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
-      Password atau username kurang tepat
+     '. $login_admin["pesan"].'
     </div>';
                         }
                                 ?>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="username" id="username" class="form-control" type="text" placeholder="Username" autocomplete="off" autofocus="" />
+                            <input name="username" id="username" class="form-control" type="text" placeholder="Username" autocomplete="off" autofocus required/>
                         </div>
                         <br/>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                            <input name="password" id="password" class="form-control" type="password" placeholder="Password" autocomplete="off" />
+                            <input name="password" id="password" class="form-control" type="password" placeholder="Password" required />
                         </div>
                         <br />
-                        <input name="submit" type="submit" value="Login" class="btn btn-info btn-block">
+                        <input name="login_admin" type="submit" value="Login" class="btn btn-info btn-block">
                     </form>
 
                 </div>
@@ -70,7 +76,7 @@ if (isset($_SESSION['hak_akses']) == null) {
         </body>
     </html>
     <?php
-}
+
 ?>
 
 

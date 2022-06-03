@@ -1,6 +1,13 @@
 <?php  
 
 require 'functions.php';
+$tbl_user = query("SELECT * FROM tbl_user");
+
+// ketika tombol search di klik
+if (isset($_POST['keyword'])) {
+  $tbl_user = Search_User($_POST["keyword"]);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -27,9 +34,9 @@ require 'functions.php';
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit">Search</button>
+        <form class="d-flex" action="" method="POST" autocomplete="off">
+          <input class="form-control me-2" type="Search" name="keyword" placeholder="Cari" aria-label="Search" />
+          <button class="btn btn-outline-dark" type="submit" autofocus>Cari</button>
         </form>
 
         <div class="icon">
@@ -46,10 +53,10 @@ require 'functions.php';
       <div class="col-md-2 bg-secondary mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5">
           <li class="nav-item">
-            <a class="nav-link active text-white pt-4" aria-current="page" href="dashboard.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
+            <a class="nav-link active text-white pt-4" href="dashboard.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar user</a>
+            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar Pengguna</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white pt-4" href="daftar_pasien.php"><i class="fa-solid fa-bed" style="margin-right: 10px"></i>Daftar Pasien</a>
@@ -58,13 +65,58 @@ require 'functions.php';
             <a class="nav-link text-white pt-4" href="daftar_dokter.php"><i class="fa-solid fa-user-doctor" style="margin-right: 10px"></i>Daftar Dokter</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark pt-4" href="#">Logout</a>
+            <a class="nav-link text-dark pt-4" href="login_admin.php">Logout</a>
           </li>
         </ul>
       </div>
       <div class="col-md-10 pt-5">
-        <h3><i class="fa-solid fa-users" style="margin-right: 10px"></i>DAFTAR USER</h3>
+        <h3><i class="fa-solid fa-users"></i>DAFTAR PENGGUNA</h3>
         <hr class="backgorund-color: grey" />
+        <a href= "tambah_data_user.php" class="btn badge btn-primary">Tambah Data Pengguna</a>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id_User</th>
+              <th scope="col">Username</th>
+              <th scope="col">Password</th>
+              <th scope="col">Status</th>
+              <th scope="col">Role</th>
+              <th colspan="3" scope="col">Aksi</th>
+            </tr>
+
+            <?php  if(empty($tbl_user)): ?>
+            <tr>
+              <td colspan="4"><p style="color: blue; font-style: italic;">Data User Tidak Di Temukan!</p><b>(NOT FOUND)</b></td>
+            </tr>
+            <?php  endif; ?>
+          </thead>
+          <tbody>
+            
+            <?php  foreach ($tbl_user as $tbl_u) { ?>
+              <tr>
+                <td><?php echo  $tbl_u['id_user']; ?></td>
+                <td><?php echo  $tbl_u['username']; ?></td>
+                <td><?php echo  $tbl_u['password']; ?></td>
+                <td>
+                  <?php  if ($tbl_u['status']==1): ?>
+                      <button class="btn badge btn-success btn-sm">Aktif</button>
+                      <?php  else: ?>
+                        <button class="btn badge btn-danger btn-sm">Tidak Aktif</button>
+
+                      <?php  endif; ?>
+                
+                </td>
+                <td><?php echo  $tbl_u['role']; ?></td>
+  
+                <td>
+                  <a href="ubah_user.php?id=<?= $tbl_u['id_user'] ?>" class="btn badge btn-primary">ubah</a>
+                  <a href="hapus_user.php?id=<?= $tbl_u['id_user'] ?>"class="btn badge btn-danger" onclick = "return confirm('yakin ingin menghapus data?');">hapus</a>
+                </td>
+              </tr>
+            <?php  } ?>
+          </tbody>
+        </table>
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
