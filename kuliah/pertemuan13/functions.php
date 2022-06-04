@@ -103,7 +103,7 @@ function upload() {
     $filetmpname = $_FILES["gambar"]["tmp_name"];
     $filesize = $_FILES["gambar"]["size"];
     $filetype = pathinfo($filename, PATHINFO_EXTENSION);
-    $allowedtype = ["jpg","jpeg","png","gif"];
+    $allowedtype = ["jpg","jpeg","png"];
 
     // cek apakah file bukan gambar
     if (!in_array($filetype, $allowedtype)) {

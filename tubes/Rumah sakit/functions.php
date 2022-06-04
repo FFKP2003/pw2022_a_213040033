@@ -1,4 +1,5 @@
 <?php
+session_start();
 function connection() { 
     $conn = mysqli_connect('localhost', 'root', '', 'rumah_sakit') or die('KONEKSI GAGAL!');
     
@@ -265,5 +266,16 @@ function login_user($data) {
             'error' => true,
             'pesan' => 'Username / Password Tidak Valid!'
         ];
+    }
+}
+
+function flash($status = '', $msg = '')
+{
+    if (isset($_SESSION[$status])) {
+        $msg = $_SESSION[$status];
+        unset($_SESSION[$status]);
+        return $msg;
+    } else {
+        $_SESSION[$status] = $msg;
     }
 }

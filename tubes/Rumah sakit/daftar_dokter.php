@@ -66,7 +66,18 @@ if (isset($_POST['keyword'])) {
         <h3><i class="fa-solid fa-user-doctor"></i>DAFTAR DOKTER</h3>
         <hr class="backgorund-color: grey" />
         <a href= "tambah_data_dokter.php" class="btn badge btn-primary">Tambah Data Dokter</a>
-
+        <?php if (isset($_SESSION['error'])) : ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error</strong> : <?= flash('error') ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['success'])) : ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success</strong> : <?= flash('success') ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
         <table class="table table-striped">
           <thead>
             <tr>

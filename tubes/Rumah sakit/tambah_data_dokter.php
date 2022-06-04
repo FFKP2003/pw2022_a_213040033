@@ -6,11 +6,8 @@ require 'functions.php';
 if (isset($_POST["tambah"])) {
 
 if (tambah_data_dokter($_POST) > 0) {
-  echo "<script>
-          alert( 'data berhasil di tambahkan!' );
-          document.location.href =
-          'daftar_dokter.php';
-          </script>";
+  flash('success', "Berhasil menambah data dokter");
+  header("Location:daftar_dokter.php");
 }
 }
 ?>
