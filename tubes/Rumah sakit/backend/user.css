@@ -1,0 +1,48 @@
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.nav-link:hover {
+  background-color: grey;
+}
+.display-4 {
+  font-weight: bold;
+}
+.img {
+  border-radius: 20px;
+  height: 110px;
+  position: absolute;
+  z-index: 0;
+  top: 25px;
+  right: 4px;
+  font-size: 50px;
+}
+.card {
+  margin-left: 80px;
+}
+.col-md-10 h3 {
+  margin-left: 65px;
+}
+.container {
+  margin: -35px;
+}
+.container-fluid a {
+  text-decoration: none;
+}
+.container-fluid a:hover {
+  color: rgb(255, 255, 255);
+}
+.card-body .btn:hover {
+  background-color: rgb(0, 0, 0);
+}
+.card-body .btn:active {
+  background-color: rgb(6, 221, 254);
+  color: black;
+}
+.img-dokter {
+  object-fit: cover;
+  object-position: center;
+  width: 60px;
+  height: 60px;
+}

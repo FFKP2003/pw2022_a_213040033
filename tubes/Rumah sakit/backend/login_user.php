@@ -1,9 +1,9 @@
 <?php
-require 'functions.php';
+require 'functions1.php';
 // ketika tombol login ditekan
 
-if (isset($_POST['login_user'])) {
-    login_user($_POST);
+if (isset($_POST['login_pengguna'])) {
+    $login_user = login_user($_POST);
 }
     ?>
     <!DOCTYPE html>
@@ -41,10 +41,10 @@ if (isset($_POST['login_user'])) {
                         <br>
                         <br>
                         <?php 
-                        if(isset($_GET['error'])){
+                        if(isset($login_user) && $login_user['error']){
                             echo '<div class="alert alert-warning alert-dismissible fade in" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
-      Password atau username kurang tepat
+      '. $login_user["pesan"].'
     </div>';
                         }
                                 ?>
@@ -60,7 +60,7 @@ if (isset($_POST['login_user'])) {
                         <br>
                         <a style="float: right;" class="label-link" href="#">Forgot password?</a>
                         <br>
-                        <input name="login_user" type="submit" value="Login" class="btn btn-danger btn-block">
+                        <input name="login_pengguna" type="submit" value="Login" class="btn btn-danger btn-block">
                         <br>
                         <P>Pengguna belum memiliki Akun?? <a class="label-link" href="registrasi.php">Registrasi</a></P>          
                     </form>

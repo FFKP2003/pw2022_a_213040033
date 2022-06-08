@@ -1,7 +1,7 @@
 <?php
 session_start();
 function connection() { 
-    $conn = mysqli_connect('localhost', 'root', '', 'rumah_sakit') or die('KONEKSI GAGAL!');
+    $conn = mysqli_connect('localhost', 'root', '', 'rumah_sakit') or die('connection GAGAL!');
     
     return $conn;
 }
@@ -17,7 +17,7 @@ function query($query) {
     return $rows;
 }
 
-function tambah_data_pasien($data) {
+function tambah_data_pasien1($data) {
     $conn = connection(); 
 
     $Nama_Pasien = htmlspecialchars($data["nama_pasien"]);
@@ -34,7 +34,7 @@ function tambah_data_pasien($data) {
     return mysqli_affected_rows($conn);
 }
 
-function tambah_data_dokter($data) {
+function tambah_data_dokter1($data) {
     $conn = connection(); 
       // cek apakah user tidak memilih gambar
       if ($_FILES["gambar"]["error"] === 4) {
@@ -64,32 +64,15 @@ function tambah_data_dokter($data) {
     return mysqli_affected_rows($conn);
 }
 
-function tambah_data_user($data) {
-    $conn = connection(); 
 
-    $Username = htmlspecialchars($data["username"]);
-    $Password = htmlspecialchars($data["password"]);
-    $Status = htmlspecialchars($data["status"]);
-    $Role = htmlspecialchars($data["role"]);
-
-    $query = "INSERT INTO
-                tbl_user
-                VALUES
-                (null, '$Username','$Password','$Status','$Role')";
-
-    mysqli_query($conn, $query) or die (mysqli_error($conn));
-
-    return mysqli_affected_rows($conn);
-}
-
-function hapus_pasien($Id_Pasien) {
+function hapus_pasien1($Id_Pasien) {
     $conn = connection();
     mysqli_query ($conn, "DELETE FROM tbl_pasien WHERE id_pasien = $Id_Pasien") or die(mysqli_error($conn));
 
     return mysqli_affected_rows($conn);
 }
 
-function hapus_dokter($Id_Dokter) {
+function hapus_dokter1($Id_Dokter) {
     $conn = connection();
 
     // query dokter berdasarkan id
@@ -103,14 +86,14 @@ function hapus_dokter($Id_Dokter) {
 
     return mysqli_affected_rows($conn);
 }
-function hapus_user($Id_User) {
+function hapus_user1($Id_User) {
     $conn = connection();
     mysqli_query ($conn, "DELETE FROM tbl_user WHERE id_user = $Id_User") or die(mysqli_error($conn));
 
     return mysqli_affected_rows($conn);
 }
 
-function ubah_pasien($data) {
+function ubah_pasien1($data) {
     $conn = connection();
 
     $Id_Pasien = $data["id_pasien"];
@@ -134,7 +117,7 @@ function ubah_pasien($data) {
     return mysqli_affected_rows($conn);
 }
 
-function ubah_dokter($data) {
+function ubah_dokter1($data) {
     $conn = connection();
 
     $Id_Dokter = $data["id_dokter"];
@@ -180,7 +163,7 @@ function ubah_dokter($data) {
     return mysqli_affected_rows($conn);
 }
 
-function ubah_user($data) {
+function ubah_user1($data) {
     $conn = connection();
 
     $Id_User = $data["id_user"];
@@ -202,7 +185,7 @@ function ubah_user($data) {
     return mysqli_affected_rows($conn);
 }
 
-function Search($keyword) {
+function Cari_Pasien($keyword) {
     $conn = connection();
 
     $query = "SELECT * FROM tbl_pasien JOIN tbl_dokter ON tbl_pasien.id_dokter = tbl_dokter.id_dokter
@@ -224,7 +207,7 @@ return $rows;
 
 }
 
-function Cari($keyword) {
+function Cari_Dokter($keyword) {
     $conn = connection();
 
     $query = "SELECT * FROM tbl_dokter
@@ -243,7 +226,7 @@ $rows[] = $row;
 return $rows;
 
 }
-function Search_User($keyword) {
+function Cari_User($keyword) {
     $conn = connection();
 
     $query = "SELECT * FROM tbl_user
@@ -264,33 +247,37 @@ return $rows;
 
 }
 
-function login_admin($data) {
+function login_user($data) {
     $conn = connection();
 
     $username = htmlspecialchars($data['username']);
     $password = htmlspecialchars($data['password']);
-    
 
-    $admin = query("SELECT * FROM tbl_user WHERE username='$username' AND status=1");
+    $user = query("SELECT * FROM tbl_user WHERE username = '$username'");
     
-
-    if ($admin) { // cek data
-        if ($admin[0]['password'] == $password) {
-            $pesan = "Admin berhasil login";
-             // set session
-        $_SESSION["login"] = true;
-            header("Location: dashboard.php?pesan={$pesan}");
+    // cek password
+    // set session
+    
+    if ($user) { // cek data
+    
+        if (password_verify($password, $user[0]['password'])) {
+            
+            
+            $pesan = "User berhasil login";
+            // set session
+        $_SESSION["login_pengguna"] = true;
+            header("Location: dashboard_pengguna.php?pesan={$pesan}");
             exit;
-        } else{
+        }else {
             return [
                 'error' => true,
-                'pesan' => 'Username / Password Tidak Valid, Silahkan Hubungi Admin!'
-            ]; 
+                'pesan' => 'password salah'
+            ];
         }
     } else {
         return [
             'error' => true,
-            'pesan' => 'Username tidak terdaftar'
+            'pesan' => 'Username / password tidak terdaftar, silahkan registrasi terlebih dahulu'
         ];
     }
 }
@@ -336,5 +323,69 @@ function upload() {
     move_uploaded_file($filetmpname, 'img/' . $newfilename);
 
     return $newfilename;
-    
 }
+function registrasi($data) {
+    $conn = connection();
+    
+    $username = htmlspecialchars(strtolower($data["username"]));
+    $password1 = mysqli_real_escape_string($conn, $data['password1']);
+    $password2 = mysqli_real_escape_string($conn, $data['password2']);
+
+    //jika username / password kosong
+    if (empty($username) || empty($password1) || empty($password2)) {
+        echo "<script>
+              alert('username / password tidak boleh kosong!');
+              document.location.href = 'registrasi.php';
+              </script>";
+
+              return false;
+    }
+    
+   $query = query("SELECT * FROM tbl_user WHERE username = '$username'");
+ 
+    // jika username sudah terdaftar
+    if ($query) {
+        echo "<script>
+              alert('username ini sudah terdaftar!');
+              document.location.href = 'registrasi.php';
+              </script>";
+
+        return false;
+    }
+    // jika konfirmasi password tidak sesuai
+
+    if ($password1 !== $password2) {
+        echo "<script>
+              alert('Konfirmasi password tidak sesuai!');
+              document.location.href = 'registrasi.php';
+              </script>";
+
+        return false;
+    }
+    // jika password < 5 digit
+
+    if (strlen($password1 < 5)) {
+        echo "<script>
+              alert('password terlalu pendek!');
+              document.location.href = 'registrasi.php';
+              </script>";
+        
+        return false;           
+    }
+    // jika username dan passwordnya sudah sesuai
+    // enkripsi password 
+
+    $password_baru = password_hash($password1, PASSWORD_DEFAULT);
+    // insert ke tabel user
+   
+    $query = "INSERT INTO
+                tbl_user
+                VALUES
+                (null,'$username','$password_baru',1,'User')
+                ";
+                
+    mysqli_query($conn, $query) or die (mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+    
+
+} 

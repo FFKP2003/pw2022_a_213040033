@@ -2,7 +2,7 @@
 require 'functions.php';
 // ketika tombol login ditekan
 
-if (isset($_POST['login_admin'])) {
+if (isset($_POST['login'])) {
     $login_admin = login_admin($_POST);
 
     
@@ -40,7 +40,7 @@ if (isset($_POST['login_admin'])) {
      data-aos-offset="0">Login Admin</h2>
                 <div align="center" style="width:320px;margin-top:5%;">
                     <form name="login_form" method="post" class="well well-lg" action="login_admin.php" style="box-shadow: 0px 0px 20px #888888;">
-                        <i class="fa-solid fa-hospital fa-3x" style="background-color: blue;padding: 25px 20px 25px 20px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
+                        <i class="fa-solid fa-hospital fa-3x" style="background-color: lightblue;padding: 25px 20px 25px 20px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
                         <br>
                         <br>
                         <?php 
@@ -61,7 +61,7 @@ if (isset($_POST['login_admin'])) {
                             <input name="password" id="password" class="form-control" type="password" placeholder="Password" required />
                         </div>
                         <br />
-                        <input name="login_admin" type="submit" value="Login" class="btn btn-info btn-block">
+                        <input name="login" type="submit" value="Login" class="btn btn-info btn-block">
                     </form>
 
                 </div>

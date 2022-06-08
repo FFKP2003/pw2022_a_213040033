@@ -34,13 +34,9 @@ if (tambah_data_dokter($_POST) > 0) {
     <title>SELAMAT DATANG ADMIN</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Cari" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit">Cari</button>
-        </form>
 
         <div class="icon">
           <h5>
@@ -76,7 +72,7 @@ if (tambah_data_dokter($_POST) > 0) {
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR DOKTER</h3>
         <hr class="backgorund-color: grey" />
         <h2>Form Tambah Data Dokter</h2>
-        <a href= "daftar_dokter.php" class="btn badge btn-info">Kembali ke Daftar Dokter</a>
+        <a href= "daftar_dokter.php" class="btn badge btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Dokter</a>
         <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
         <div class="mb-3 col-lg-5">
              <label for="nama_dokter" class="form-label">Nama Dokter</label>
@@ -110,7 +106,7 @@ if (tambah_data_dokter($_POST) > 0) {
              <input type="file" class="form-control" id="gambar" name="gambar" required >
         </div>
 
-        <button type="submit" class="btn btn-primary" name="tambah">Tambah Data Dokter</button>
+        <button type="submit" class="text-white btn btn-primary" name="tambah"><i class="fa-solid fa-plus"></i> Tambah Data Dokter</button>
         </form>
       </div>
     </div>

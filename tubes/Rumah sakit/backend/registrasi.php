@@ -1,10 +1,21 @@
 <?php
-require 'functions.php';
+require 'functions1.php';
 // ketika tombol registrasi ditekan
 
 if (isset($_POST['registrasi'])) {
-    registrasi($_POST);
-}
+    if(registrasi($_POST) > 0) {
+        echo "<script>
+        alert('User baru berhasil ditambahkan.sekarang kamu memiliki akses untuk login!');
+        document.location.href = 'login_user.php';
+        </script> ";
+    } else {
+        echo 'User gagal ditambahkan!';
+    } 
+        
+       
+    }
+
+ 
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -42,15 +53,15 @@ if (isset($_POST['registrasi'])) {
                         <br/>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                            <input name="password1" id="password" class="form-control" type="password" placeholder="Password" required/>
+                            <input name="password1" id="password1" class="form-control" type="password" placeholder="Password" required/>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                            <input name="password2" id="password" class="form-control" type="password" placeholder="Konfirmasi Password" required/>
+                            <input name="password2" id="password2" class="form-control" type="password" placeholder="Konfirmasi Password" required/>
                         </div>
                         <br>
-                        <input name="registrasi.php" type="submit" value="Daftar" class="btn btn-success btn-block">
+                        <input name="registrasi" type="submit" value="Daftar" class="btn btn-success btn-block">
                     </form>
                 </div>
             </div>

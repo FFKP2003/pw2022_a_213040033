@@ -1,20 +1,20 @@
 <?php  
-require 'functions.php';
+require 'functions1.php';
 
 //  jika tidak ada id di url
 if (!isset($_GET["id"])) {
-  header("Location: daftar_pasien.php");
+  header("Location: daftar_user_pengguna.php");
 }
 // query data pasien berdasarkan id
-$Id_Pasien = $_GET["id"];
-$tbl_p = query("SELECT * FROM tbl_pasien WHERE id_pasien = $Id_Pasien")[0];
-if (isset($_POST["ubah_pasien"])) {
+$Id_User = $_GET["id"];
+$tbl_u = query("SELECT * FROM tbl_user WHERE id_user = $Id_User")[0];
+if (isset($_POST["ubah_user"])) {
 
-if (ubah_pasien($_POST) > 0) {
+if (ubah_user1($_POST) > 0) {
   echo "<script>
           alert( 'data berhasil diubah!' );
           document.location.href =
-          'daftar_pasien.php';
+          'daftar_user_pengguna.php';
           </script>";
 }
 }
@@ -28,7 +28,7 @@ if (ubah_pasien($_POST) > 0) {
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="user.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -37,13 +37,12 @@ if (ubah_pasien($_POST) > 0) {
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.min.css" />
-    <title>SELAMAT DATANG ADMIN</title>
+    <title>SELAMAT DATANG USER</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-
+        <a class="navbar-brand" href="#">SELAMAT DATANG USER | <b>RS. MULTIVERSE</b></a>
         <div class="icon">
           <h5>
             <span style="margin-right: 10px"><i class="fa-solid fa-envelope" data-toggle="tooltip" title="Surat Masuk"></i></span>
@@ -58,16 +57,16 @@ if (ubah_pasien($_POST) > 0) {
       <div class="col-md-2 bg-secondary mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5">
           <li class="nav-item">
-            <a class="nav-link active text-white pt-4" href="dashboard.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
+            <a class="nav-link active text-white pt-4" href="dashboard_pengguna.php"><i class="fa-solid fa-gauge" style="margin-right: 10px"></i>Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_user.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar Pengguna</a>
+            <a class="nav-link text-white pt-4" href="daftar_user_pengguna.php"><i class="fa-solid fa-users" style="margin-right: 10px"></i>Daftar Pengguna</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_pasien.php"><i class="fa-solid fa-bed" style="margin-right: 10px"></i>Daftar Pasien</a>
+            <a class="nav-link text-white pt-4" href="daftar_pasien_pengguna.php"><i class="fa-solid fa-bed" style="margin-right: 10px"></i>Daftar Pasien</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white pt-4" href="daftar_dokter.php"><i class="fa-solid fa-user-doctor" style="margin-right: 10px"></i>Daftar Dokter</a>
+            <a class="nav-link text-white pt-4" href="daftar_dokter_pengguna.php"><i class="fa-solid fa-user-doctor" style="margin-right: 10px"></i>Daftar Dokter</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-dark pt-4" href="#">Logout</a>
@@ -75,39 +74,38 @@ if (ubah_pasien($_POST) > 0) {
         </ul>
       </div>
       <div class="col-md-10 pt-5">
-        <h3><i class="fa-solid fa-gauge"></i>DAFTAR PASIEN</h3>
+        <h3><i class="fa-solid fa-gauge"></i>DAFTAR PENGGUNA</h3>
         <hr class="backgorund-color: grey" />
-        <h2>Form Ubah Data Pasien</h2>
-        <a href= "daftar_pasien.php" class="btn badge btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pasien</a>
+        <h2>Form Ubah Data Pengguna</h2>
+        <a href= "daftar_user_pengguna.php" class="btn badge btn-danger"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pengguna</a>
         <form action="" method="POST" autocomplete="off">
 
-        <input type="hidden" name="id_pasien" value="<?= $tbl_p['id_pasien']; ?>">
+        <input type="hidden" name="id_user" value="<?= $tbl_u['id_user']; ?>">
 
         <div class="mb-3 col-lg-5">
-             <label for="nama_pasien" class="form-label">Nama Pasien</label>
-             <input type="text"  class="form-control" id="nama" name="nama_pasien" required  value="<?= $tbl_p['nama_pasien']; ?>">
+             <label for="username" class="form-label">Username</label>
+             <input type="text"  class="form-control" id="nama" name="username" required  value="<?= $tbl_u['username']; ?>">
         </div>
-        <div class="mb-3 col-lg-4">
-             <label for="alamat" class="form-label">Alamat</label>
-             <textarea type="text" class="form-control" id="alamat" rows="3" name="alamat" required ><?= $tbl_p['alamat'];  ?></textarea>
+        <div class="mb-3 col-lg-5">
+             <label for="password" class="form-label">Password</label>
+             <input type="text"  class="form-control" id="nama" name="password" required  value="<?= $tbl_u['password']; ?>">
         </div>
         <div class="mb-3 col-lg-2">
-             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-        <select  class="form-select" aria-label="Default select example" name="jenis_kelamin"value="<?= $tbl_p['jenis_kelamin']; ?>">
-            <option value="L">laki-laki</option>
-            <option value="P">perempuan</option>
+             <label for="status" class="form-label">Status</label>
+        <select  class="form-select" aria-label="Default select example" name="status"value="<?= $tbl_u['status']; ?>">
+            <option value="1">Aktif</option>
+            <option value="0">Tidak Aktif</option>
         </select>
         </div>
-        <div class="mb-3 col-lg-5">
-             <label for="no_telepon" class="form-label">Nomor Telepon</label>
-             <input type="text" class="form-control" name="no_telepon" required value="<?= $tbl_p['no_telepon']; ?>">
-        </div>
-        <div class="mb-3 col-lg-5">
-             <label for="id_dokter" class="form-label">Id Dokter</label>
-             <input type="text"  class="form-control" name="id_dokter" value="<?= $tbl_p['id_dokter']; ?>">
+        <div class="mb-3 col-lg-2">
+             <label for="role" class="form-label">Role</label>
+        <select  class="form-select" aria-label="Default select example" name="role"value="<?= $tbl_u['role']; ?>">
+            <option value="Admin">A</option>
+            <option value="User">U</option>
+        </select>
         </div>
 
-        <button type="submit" class="btn btn-primary" name="ubah_pasien"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Pasien</button>
+        <button type="submit" class="btn btn-danger" name="ubah_user"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Pengguna</button>
         </form>
       </div>
     </div>
@@ -115,7 +113,7 @@ if (ubah_pasien($_POST) > 0) {
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="user.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
       integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="

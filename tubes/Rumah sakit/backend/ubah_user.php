@@ -40,14 +40,9 @@ if (ubah_user($_POST) > 0) {
     <title>SELAMAT DATANG ADMIN</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">SELAMAT DATANG ADMIN | <b>RS. MULTIVERSE</b></a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="cari" aria-label="Search" />
-          <button class="btn btn-outline-dark" type="submit">Cari</button>
-        </form>
-
         <div class="icon">
           <h5>
             <span style="margin-right: 10px"><i class="fa-solid fa-envelope" data-toggle="tooltip" title="Surat Masuk"></i></span>
@@ -82,7 +77,7 @@ if (ubah_user($_POST) > 0) {
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PENGGUNA</h3>
         <hr class="backgorund-color: grey" />
         <h2>Form Ubah Data Pengguna</h2>
-        <a href= "daftar_user.php" class="btn badge btn-info">Kembali ke Daftar Pengguna</a>
+        <a href= "daftar_user.php" class="btn badge btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pengguna</a>
         <form action="" method="POST" autocomplete="off">
 
         <input type="hidden" name="id_user" value="<?= $tbl_u['id_user']; ?>">
@@ -110,7 +105,7 @@ if (ubah_user($_POST) > 0) {
         </select>
         </div>
 
-        <button type="submit" class="btn btn-primary" name="ubah_user">Ubah Data Pengguna</button>
+        <button type="submit" class="btn btn-primary" name="ubah_user"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Pengguna</button>
         </form>
       </div>
     </div>
