@@ -34,9 +34,6 @@
 
 # my repo github TUBES
 
-- https://github.com/FFKP2003/pw2022_a_213040033/tree/main/tubes/Rumah%20sakit
 
 # FRONTEND & BACKEND ( TUBES )
-- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/frontend/
-- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/login_user.php
-- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/login_admin.php
+
