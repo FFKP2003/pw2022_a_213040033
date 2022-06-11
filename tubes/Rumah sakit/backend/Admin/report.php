@@ -9,6 +9,7 @@
     $html .= '<table border="1" width="100%">
     <tr>
   
+              <th scope="col">Id_Pasien</th>
               <th scope="col">Nama_pasien</th>
               <th scope="col">Alamat</th>
               <th scope="col">Jenis_kelamin</th>
@@ -19,15 +20,17 @@
     foreach ($query as $row) :
     $html .= "<tr>
      
+        <td>".$row['id_pasien']."</td>
         <td>".$row['nama_pasien']."</td>
         <td>".$row['alamat']."</td>
         <td>".$row['jenis_kelamin']."</td>
         <td>".$row['no_telepon']."</td>
+        <td>".$row['id_dokter']."</td>
        
     </tr>";
     $no++;
     endforeach;
-    $html .= "</html>";
+    $html .= "</table>";
     $tes = $dompdf->loadHtml($html);
     // var_dump($tes);
     // Setting ukuran dan orientasi kertas
