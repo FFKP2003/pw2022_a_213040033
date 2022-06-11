@@ -37,7 +37,7 @@
 
 # FRONTEND & BACKEND ( TUBES )
 - http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/Admin/login_admin.php
-- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/User/login_user.php
+- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/user/login_user.php
 
 # WEB HOSTING
 -https://progenitive-patch.000webhostapp.com/
