@@ -37,7 +37,7 @@ if (isset($_POST['login_pengguna'])) {
      data-aos-offset="0">Login Pengguna</h2>
                 <div align="center" style="width:320px;margin-top:5%;">
                     <form name="login_form" method="post" class="well well-lg" action="login_user.php" style="box-shadow: 0px 0px 20px #888888;">
-                    <i class="fa-solid fa-hospital fa-3x" style="background-color: red;padding: 25px 20px 25px 20px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
+                    <i class="fa-solid fa-hospital fa-3x" style="background-color: red;padding: 25px 20px 25px 20px;border-radius: 50%;box-shadow: #888888 -1px 2px 5px;"></i>
                         <br>
                         <br>
                         <?php 
@@ -58,8 +58,9 @@ if (isset($_POST['login_pengguna'])) {
                             <input name="password" id="password" class="form-control" type="password" placeholder="Password" required/>       
                         </div>
                         <br>
-                        <a style="float: right;" class="label-link" href="#">Forgot password?</a>
+                        <!-- <a style="float: right;" class="label-link" href="#">Forgot password?</a>
                         <br>
+                        <br> -->
                         <input name="login_pengguna" type="submit" value="Login" class="btn btn-danger btn-block">
                         <br>
                         <P>Pengguna belum memiliki Akun?? <a class="label-link" href="registrasi.php">Registrasi</a></P>          

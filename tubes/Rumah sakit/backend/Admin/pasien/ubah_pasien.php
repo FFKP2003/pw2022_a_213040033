@@ -78,7 +78,7 @@ if (ubah_pasien($_POST) > 0) {
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
         <h2>Form Ubah Data Pasien</h2>
-        <a href= "daftar_pasien.php" class="btn badge btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pasien</a>
+        <a href= "daftar_pasien.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pasien</a>
         <form action="" method="POST" autocomplete="off">
 
         <input type="hidden" name="id_pasien" value="<?= $tbl_p['id_pasien']; ?>">
@@ -107,7 +107,7 @@ if (ubah_pasien($_POST) > 0) {
              <input type="text"  class="form-control" name="id_dokter" value="<?= $tbl_p['id_dokter']; ?>">
         </div>
 
-        <button type="submit" class="btn btn-primary" name="ubah_pasien"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Pasien</button>
+        <button type="submit" class="btn btn-sm btn-primary" name="ubah_pasien"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Pasien</button>
         </form>
       </div>
     </div>

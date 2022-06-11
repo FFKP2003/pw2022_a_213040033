@@ -40,7 +40,7 @@ if (isset($_POST['login'])) {
      data-aos-offset="0">Login Admin</h2>
                 <div align="center" style="width:320px;margin-top:5%;">
                     <form name="login_form" method="post" class="well well-lg" action="login_admin.php" style="box-shadow: 0px 0px 20px #888888;">
-                        <i class="fa-solid fa-hospital fa-3x" style="background-color: lightblue;padding: 25px 20px 25px 20px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
+                        <i class="fa-solid fa-hospital fa-3x" style="background-color: lightblue;padding: 25px 20px 25px 20px;border-radius: 50%;box-shadow: #888888 -1px 2px 5px;"></i>
                         <br>
                         <br>
                         <?php 

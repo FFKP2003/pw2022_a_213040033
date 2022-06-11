@@ -76,7 +76,7 @@ if (isset($_POST['keyword'])) {
       <div class="col-md-10 pt-5">
         <h3><i class="fa-solid fa-users"></i>DAFTAR PENGGUNA</h3>
         <hr class="backgorund-color: grey" />
-        <a href= "tambah_data_user.php" class="btn badge btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Pengguna</a>
+        <a href= "tambah_data_user.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Pengguna</a>
 
         <table class="table">
           <thead>
@@ -114,8 +114,8 @@ if (isset($_POST['keyword'])) {
                 <td><?php echo  $tbl_u['role']; ?></td>
   
                 <td>
-                  <a href="ubah_user.php?id=<?= $tbl_u['id_user'] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
-                  <a href="hapus_user.php?id=<?= $tbl_u['id_user'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
+                  <a class="btn btn-sm btn-primary" href="ubah_user.php?id=<?= $tbl_u['id_user'] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a class="btn btn-sm btn-danger" href="hapus_user.php?id=<?= $tbl_u['id_user'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
             <?php  } ?>

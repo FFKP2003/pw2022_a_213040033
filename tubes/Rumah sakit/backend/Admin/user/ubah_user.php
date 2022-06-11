@@ -77,7 +77,7 @@ if (ubah_user($_POST) > 0) {
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PENGGUNA</h3>
         <hr class="backgorund-color: grey" />
         <h2>Form Ubah Data Pengguna</h2>
-        <a href= "daftar_user.php" class="btn badge btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pengguna</a>
+        <a href= "daftar_user.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pengguna</a>
         <form action="" method="POST" autocomplete="off">
 
         <input type="hidden" name="id_user" value="<?= $tbl_u['id_user']; ?>">
@@ -105,7 +105,7 @@ if (ubah_user($_POST) > 0) {
         </select>
         </div>
 
-        <button type="submit" class="btn btn-primary" name="ubah_user"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Pengguna</button>
+        <button type="submit" class="btn btn-sm btn-primary" name="ubah_user"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Pengguna</button>
         </form>
       </div>
     </div>

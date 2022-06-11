@@ -78,7 +78,7 @@ if (ubah_dokter($_POST) > 0) {
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR DOKTER</h3>
         <hr class="backgorund-color: grey" />
         <h2>Form Ubah Data Dokter</h2>
-        <a href= "daftar_dokter.php" class="btn badge btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Dokter</a>
+        <a href= "daftar_dokter.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Dokter</a>
         <form action="" method="POST" autocomplete="off" enctype="multipart/form-data">
 
         <input type="hidden" name="id_dokter" value="<?= $tbl_d['id_dokter']; ?>">
@@ -120,7 +120,7 @@ if (ubah_dokter($_POST) > 0) {
              <input type="file" class="form-control" id="gambar" name="gambar"  >
         </div>
 
-        <button type="submit" class="btn btn-primary" name="ubah_dokter"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Dokter</button>
+        <button type="submit" class="btn btn-sm btn-primary" name="ubah_dokter"><i class="fa-solid fa-pen-to-square"></i> Ubah Data Dokter</button>
         </form>
       </div>
     </div>

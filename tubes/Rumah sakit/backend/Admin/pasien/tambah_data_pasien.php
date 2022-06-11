@@ -76,7 +76,7 @@ if (tambah_data_pasien($_POST) > 0) {
         <h3><i class="fa-solid fa-gauge"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
         <h2>Form Tambah Data Pasien</h2>
-        <a href= "daftar_pasien.php" class="btn badge btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pasien</a>
+        <a href= "daftar_pasien.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-circle-left"></i> Kembali ke Daftar Pasien</a>
         <form action="" method="POST" autocomplete="off">
         <div class="mb-3 col-lg-4">
              <label for="nama_pasien" class="form-label">Nama Pasien</label>
@@ -107,7 +107,7 @@ if (tambah_data_pasien($_POST) > 0) {
         </select>
         </div>
 
-        <button type="submit" class="text-white btn btn-primary" name="tambah"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</button>
+        <button type="submit" class="text-white btn btn-sm btn-primary" name="tambah"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</button>
         </form>
       </div>
     </div>

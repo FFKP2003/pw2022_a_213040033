@@ -43,7 +43,7 @@ if (isset($_POST['registrasi'])) {
 
                 <div align="center" style="width:320px;margin-top:150px;">
                     <form name="registrasi.php" method="post" class="well well-lg" action="registrasi.php" style="box-shadow: 0px 0px 20px #888888;">
-                        <i class="glyphicon glyphicon-user fa-3x" style="background-color: green;padding: 20px 20px 20px 20px;border-radius: 50%;box-shadow: #ffffff -1px 2px 1px;"></i>
+                        <i class="glyphicon glyphicon-user fa-3x" style="background-color: green;padding: 20px 20px 20px 20px;border-radius: 50%;box-shadow: #888888 -1px 2px 5px;"></i>
                         <br>
                         <br>
                         <div class="input-group">
@@ -61,7 +61,10 @@ if (isset($_POST['registrasi'])) {
                             <input name="password2" id="password2" class="form-control" type="password" placeholder="Konfirmasi Password" required/>
                         </div>
                         <br>
-                        <input name="registrasi" type="submit" value="Daftar" class="btn btn-success btn-block">
+                        <input style="background-color: green; color: white;" name="registrasi" type="submit" value="Daftar" class="btn btn-block">
+                        <br>
+                        <a style="background-color: lightgrey;" name="kembali" class="btn "href="http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/User/login_user.php">Kembali</a>
+
                     </form>
                 </div>
             </div>

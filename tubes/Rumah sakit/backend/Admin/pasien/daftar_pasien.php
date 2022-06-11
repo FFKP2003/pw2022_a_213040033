@@ -74,7 +74,7 @@ if (isset($_POST['keyword'])) {
       <div class="col-md-10 pt-5">
         <h3><i class="fa-solid fa-bed"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
-        <a href= "tambah_data_pasien.php" class="btn badge btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</a>
+        <a href= "tambah_data_pasien.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</a>
   <div id="container">
         <table class="table">
           <thead>
@@ -107,8 +107,8 @@ if (isset($_POST['keyword'])) {
                 <td><?php echo  $tbl_p['nama_dokter']; ?></td>
   
                 <td>
-                  <a href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                  <a href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
+                  <a class="btn btn-sm btn-primary" href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a class="btn btn-sm btn-danger" href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
             <?php  } ?>

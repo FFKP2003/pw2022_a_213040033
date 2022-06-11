@@ -71,7 +71,7 @@ if (isset($_POST['keyword'])) {
       <div class="col-md-10 pt-5">
         <h3><i class="fa-solid fa-user-doctor"></i>DAFTAR DOKTER</h3>
         <hr class="backgorund-color: grey" />
-        <a href= "../dokter/tambah_data_dokter.php" class="btn badge btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Dokter</a>
+        <a href= "../dokter/tambah_data_dokter.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Dokter</a>
         <?php if (isset($_SESSION['error'])) : ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Error</strong> : <?= flash('error') ?>
@@ -112,8 +112,8 @@ if (isset($_POST['keyword'])) {
                 <td><?php echo  $tbl_d['spesialis']; ?></td>
                 <td><?php echo  $tbl_d['jadwal_praktik']; ?></td>
                   <td>
-                  <a href="ubah_dokter.php?id=<?= $tbl_d['id_dokter'] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
-                  <a href="hapus_dokter.php?id=<?= $tbl_d['id_dokter'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
+                  <a class="btn btn-sm btn-primary" href="ubah_dokter.php?id=<?= $tbl_d['id_dokter'] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a class="btn btn-sm btn-danger" href="hapus_dokter.php?id=<?= $tbl_d['id_dokter'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
             <?php  } ?>
