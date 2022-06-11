@@ -107,7 +107,8 @@ if (tambah_data_pasien($_POST) > 0) {
         </select>
         </div>
 
-        <button type="submit" class="text-white btn btn-sm btn-primary" name="tambah"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</button>
+        <button  type="submit" class="text-white btn btn-sm btn-primary" name="tambah"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</button>
+        
         </form>
       </div>
     </div>

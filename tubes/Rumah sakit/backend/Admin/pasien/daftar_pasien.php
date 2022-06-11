@@ -75,6 +75,7 @@ if (isset($_POST['keyword'])) {
         <h3><i class="fa-solid fa-bed"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
         <a href= "tambah_data_pasien.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</a>
+        <a class="btn btn-sm btn-success" href="../report.php">Unduh</a>
   <div id="container">
         <table class="table">
           <thead>
@@ -109,6 +110,7 @@ if (isset($_POST['keyword'])) {
                 <td>
                   <a class="btn btn-sm btn-primary" href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                   <a class="btn btn-sm btn-danger" href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
+                  
                 </td>
               </tr>
             <?php  } ?>
