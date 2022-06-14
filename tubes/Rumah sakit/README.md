@@ -40,7 +40,8 @@
 - http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/
 
 #backend
-
+- https://progenitive-patch.000webhostapp.com/backend/Admin/login_admin.php
+- https://progenitive-patch.000webhostapp.com/backend/User/login_user.php
 
 
 # WEB HOSTING
