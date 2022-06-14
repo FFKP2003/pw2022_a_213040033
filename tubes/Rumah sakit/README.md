@@ -36,9 +36,14 @@
 - https://github.com/FFKP2003/pw2022_a_213040033
 
 # FRONTEND & BACKEND ( TUBES )
-- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/Admin/login_admin.php
+#frontend
+- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/
+
+#backend
+- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/admin/login_admin.php
 - http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/user/login_user.php
 
+
 # WEB HOSTING
--https://progenitive-patch.000webhostapp.com/
+- https://progenitive-patch.000webhostapp.com/
 
