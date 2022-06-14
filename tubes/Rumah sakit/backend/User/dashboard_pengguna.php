@@ -5,7 +5,16 @@ if (!isset($_SESSION['login_pengguna'])) {
   header("Location: ./login_user.php");
 }
 
+$conn = connection();
 
+$query = "SELECT count(id_pasien) AS count FROM tbl_pasien";
+$jumlah_daftar_pasien_pengguna = query($query)[0];
+
+$query = 'SELECT count(id_dokter) AS count FROM tbl_dokter';
+$jumlah_daftar_dokter_pengguna = query($query)[0];
+
+$query = 'SELECT count(id_user) AS count FROM tbl_user';
+$jumlah_daftar_user_pengguna = query($query)[0];
 ?>
 
 
@@ -82,7 +91,7 @@ if (!isset($_SESSION['login_pengguna'])) {
               <div class="card-body-icon"></div>
            
               <h5 class="card-title">JUMLAH PASIEN</h5>
-              <div class="display-4">900</div>
+              <div class="display-4"><?php  echo $jumlah_daftar_pasien_pengguna["count"]; ?></div>
               <a href="./pasien/daftar_pasien_pengguna.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
@@ -92,7 +101,7 @@ if (!isset($_SESSION['login_pengguna'])) {
               <a href="../Assets/img/dokter.png"><img class="img" src="../Assets/img/dokter.png" alt="" /></a>
               <div class="card-body-icon"></div>
               <h5 class="card-title">JUMLAH DOKTER</h5>
-              <div class="display-4">500</div>
+              <div class="display-4"><?php  echo $jumlah_daftar_dokter_pengguna["count"]; ?></div>
               <a href="./dokter/daftar_dokter_pengguna.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
@@ -101,7 +110,7 @@ if (!isset($_SESSION['login_pengguna'])) {
               <a href="../Assets/img/user.png"><img class="img" src="../Assets/img/user.png" alt="" ></a>
               <div class="card-body-icon"></div>
               <h5 class="card-title">JUMLAH PENGGUNA</h5>
-              <div class="display-4">2</div>
+              <div class="display-4"><?php  echo $jumlah_daftar_user_pengguna["count"]; ?></div>
               <a href="./user/daftar_user_pengguna.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>

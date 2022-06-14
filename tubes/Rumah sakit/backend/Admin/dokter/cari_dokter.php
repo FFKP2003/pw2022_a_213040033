@@ -36,8 +36,8 @@ $tbl_dokter = query($query);
                 <td><?php echo  $tbl_d['spesialis']; ?></td>
                 <td><?php echo  $tbl_d['jadwal_praktik']; ?></td>
                   <td>
-                  <a href="./ubah_dokter.php?= $tbl_d['id_dokter'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                  <a href="./hapus_dokter.php?= $tbl_d['id_dokter'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
+                  <a class="btn btn-sm btn-primary" href="ubah_dokter.php?id=<?= $tbl_d['id_dokter'] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a class="btn btn-sm btn-danger" href="hapus_dokter.php?id=<?= $tbl_d['id_dokter'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
             <?php  } ?>

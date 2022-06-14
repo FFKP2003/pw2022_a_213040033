@@ -43,8 +43,8 @@
                 <td><?php echo  $tbl_p['nama_dokter']; ?></td>
   
                 <td>
-                  <a href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
-                  <a href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
+                  <a class="btn btn-sm btn-primary" href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a class="btn btn-sm btn-danger" href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
             <?php  } ?>

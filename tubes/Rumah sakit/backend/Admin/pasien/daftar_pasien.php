@@ -1,6 +1,7 @@
 <?php  
 require '../functions.php';
 $tbl_pasien = query("SELECT * FROM tbl_pasien INNER JOIN tbl_dokter ON tbl_pasien.id_dokter = tbl_dokter.id_dokter");
+
 if (!isset($_SESSION['login'])) {
   header("Location: ../login_admin.php");
 }
@@ -107,7 +108,7 @@ if (isset($_POST['keyword'])) {
                 <td><?php echo  $tbl_p['jenis_kelamin']; ?></td>
                 <td><?php echo  $tbl_p['no_telepon']; ?></td>
                 <td><?php echo  $tbl_p['nama_dokter']; ?></td>
-  
+                
                 <td>
                   <a class="btn btn-sm btn-primary" href="ubah_pasien.php?id=<?= $tbl_p['id_pasien'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                   <a class="btn btn-sm btn-danger" href="hapus_pasien.php?id=<?= $tbl_p['id_pasien'] ?>" onclick = "return confirm('yakin ingin menghapus data?');"><i class="fa-solid fa-trash-can"></i></a>

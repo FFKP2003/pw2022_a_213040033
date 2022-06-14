@@ -4,7 +4,9 @@ require './functions.php';
 if (!isset($_SESSION['login'])) {
   header("Location: login_admin.php");
 }
+
 $conn = connection();
+
 $query = "SELECT count(id_pasien) AS count FROM tbl_pasien";
 $jumlah_daftar_pasien = query($query)[0];
 
