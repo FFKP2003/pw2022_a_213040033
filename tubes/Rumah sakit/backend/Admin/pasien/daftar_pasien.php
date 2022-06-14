@@ -4,6 +4,7 @@ $tbl_pasien = query("SELECT * FROM tbl_pasien INNER JOIN tbl_dokter ON tbl_pasie
 if (!isset($_SESSION['login'])) {
   header("Location: ../login_admin.php");
 }
+
 // ketika tombol search di klik
 if (isset($_POST['keyword'])) {
   $tbl_pasien = Search($_POST["keyword"]);

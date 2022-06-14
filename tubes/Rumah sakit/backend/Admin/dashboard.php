@@ -4,6 +4,15 @@ require './functions.php';
 if (!isset($_SESSION['login'])) {
   header("Location: login_admin.php");
 }
+$conn = connection();
+$query = "SELECT count(id_pasien) AS count FROM tbl_pasien";
+$jumlah_daftar_pasien = query($query)[0];
+
+$query = "SELECT count(id_dokter) AS count FROM tbl_dokter";
+$jumlah_daftar_dokter = query($query)[0];
+
+$query = "SELECT count(id_user) AS count FROM tbl_user";
+$jumlah_daftar_user = query($query)[0];
 
 ?>
 
@@ -82,7 +91,7 @@ if (!isset($_SESSION['login'])) {
               <div class="card-body-icon"></div>
            
               <h5 class="card-title">JUMLAH PASIEN</h5>
-              <div class="display-4">900</div>
+              <div class="display-4"><?php  echo $jumlah_daftar_pasien["count"]; ?></div>
               <a href="../Admin/pasien/daftar_pasien.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
@@ -92,7 +101,7 @@ if (!isset($_SESSION['login'])) {
               <a href="../Assets/img/dokter.png"><img class="img" src="../Assets/img/dokter.png" alt="" /></a>
               <div class="card-body-icon"></div>
               <h5 class="card-title">JUMLAH DOKTER</h5>
-              <div class="display-4">500</div>
+              <div class="display-4"><?php  echo $jumlah_daftar_dokter["count"]; ?></div>
               <a href="../Admin/dokter/daftar_dokter.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>
@@ -101,7 +110,7 @@ if (!isset($_SESSION['login'])) {
               <a href="../Assets/img/user.png"><img class="img" src="../Assets/img/user.png" alt="" ></a>
               <div class="card-body-icon"></div>
               <h5 class="card-title">JUMLAH PENGGUNA</h5>
-              <div class="display-4">2</div>
+              <div class="display-4"><?php  echo $jumlah_daftar_user["count"]; ?></div>
               <a href="../Admin/user/daftar_user.php"><p class="card-text text-lightblue btn badge btn-light" style="color: lightblue;">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
             </div>
           </div>

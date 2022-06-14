@@ -4,6 +4,8 @@
     use Dompdf\Dompdf;
     $dompdf = new Dompdf();
     $query = query("SELECT * FROM tbl_pasien");
+
+
     $html = '<center><h3>Data Pasien Rumah Sakit</h3></center><hr/><br/>';
     // var_dump($query);
     $html .= '<table border="1" width="100%">

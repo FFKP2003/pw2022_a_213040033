@@ -4,6 +4,8 @@ $tbl_pasien = query("SELECT * FROM tbl_pasien INNER JOIN tbl_dokter ON tbl_pasie
 if (!isset($_SESSION['login_pengguna'])) {
   header("Location: ../login_user.php");
 }
+ob_clean();
+
 // ketika tombol search di klik
 if (isset($_POST['keyword'])) {
   $tbl_pasien = Cari_Pasien($_POST["keyword"]);

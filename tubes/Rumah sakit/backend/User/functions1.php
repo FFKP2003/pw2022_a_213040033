@@ -364,7 +364,7 @@ function registrasi($data) {
     }
     // jika password < 5 digit
 
-    if (strlen($password1 < 5)) {
+    if (strlen($password1 )< 5) {
         echo "<script>
               alert('password terlalu pendek!');
               document.location.href = 'registrasi.php';

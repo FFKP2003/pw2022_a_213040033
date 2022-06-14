@@ -5,7 +5,7 @@ if (!isset($_SESSION["login"])) {
   
 }
 
-$tbl_dokter = query("SELECT * FROM tbl_dokter");
+$tbl_dokter = query("SELECT * FROM tbl_dokter ORDER BY nama_dokter ASC");
 
 // ketika tombol search di klik
 if (isset($_POST['keyword'])) {
