@@ -76,7 +76,7 @@ if (isset($_POST['keyword'])) {
         <h3><i class="fa-solid fa-bed"></i>DAFTAR PASIEN</h3>
         <hr class="backgorund-color: grey" />
         <a href= "tambah_data_pasien.php" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus"></i> Tambah Data Pasien</a>
-        <a class="btn btn-sm btn-success" href="../report.php">Unduh</a>
+        <a class="btn btn-sm btn-success" href="../report.php">Unduh PDF</a>
   <div id="container">
         <table class="table">
           <thead>
