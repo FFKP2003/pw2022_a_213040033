@@ -40,8 +40,7 @@
 - http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/
 
 #backend
-- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/admin/login_admin.php
-- http://localhost/pw2022_a_213040033/tubes/Rumah%20sakit/backend/user/login_user.php
+
 
 
 # WEB HOSTING
